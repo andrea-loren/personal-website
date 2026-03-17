@@ -2,26 +2,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
 :root {
-    --bg-dark: #120526;       /* Darkest purple background */
-    --accent-bright: #7F1DFF; /* Vibrant violet */
-    --accent-pink: #A3299E;   /* Magenta-purple */
+    --bg-dark: #120526;       
+    --accent-bright: #7F1DFF; 
+    --accent-pink: #A3299E;   
     --text-white: #FFFFFF;
     --text-muted: #BDB7C5;
-    /* Glassmorphism Variables */
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 body {
-    background-color: var(--bg-dark);
-    /* Adding a subtle gradient glow to the background for the glass to catch */
-    background-image: radial-gradient(circle at 10% 20%, rgba(127, 29, 255, 0.1) 0%, transparent 40%),
-                      radial-gradient(circle at 90% 80%, rgba(163, 41, 158, 0.1) 0%, transparent 40%);
-    color: var(--text-white);
+    background-color: var(--bg-dark) !important;
+    background-image: radial-gradient(circle at 10% 20%, rgba(127, 29, 255, 0.15) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(163, 41, 158, 0.15) 0%, transparent 40%);
+    color: var(--text-white) !important;
     font-family: 'Inter', sans-serif;
     margin: 0;
     line-height: 1.6;
     min-height: 100vh;
+}
+
+/* Force ALL headings and text to be white */
+h1, h2, h3, h4, p, li, strong, span {
+    color: var(--text-white) !important;
 }
 
 /* Glassmorphism Navigation Bar */
@@ -29,31 +32,25 @@ nav.container-fluid {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 5, 38, 0.7); /* Translucent dark */
+    background: rgba(18, 5, 38, 0.8) !important;
     backdrop-filter: blur(15px) saturate(180%);
     -webkit-backdrop-filter: blur(15px) saturate(180%);
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border) !important;
     z-index: 1000;
     padding: 10px 0;
-}
-
-nav a, nav strong {
-    color: var(--text-white) !important;
-    font-weight: 600;
 }
 
 /* Hero Section */
 .hero {
     background: transparent !important;
-    padding: 140px 0 80px 0;
+    padding: 160px 0 60px 0;
     text-align: center;
 }
 
 h1 {
-    font-weight: 800;
-    letter-spacing: -2px;
-    color: var(--text-white); /* Name is now crisp white */
     font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
 }
 
 /* Glassmorphism Project Cards */
@@ -63,42 +60,44 @@ article.project-card {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border) !important;
     border-radius: 20px !important;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 2rem !important;
+    margin-bottom: 2rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Fix for the "White Part" overlapping */
+article.project-card footer {
+    background: transparent !important;
+    border-top: 1px solid var(--glass-border) !important;
+    padding: 1rem 0 0 0 !important;
+    margin-top: 1.5rem !important;
 }
 
 article.project-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(127, 29, 255, 0.5) !important;
+    transform: translateY(-8px);
+    border-color: var(--accent-bright) !important;
     background: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Typography & Links */
-h2, h3, h4 {
-    color: var(--text-white);
-}
-
-p {
-    color: var(--text-muted);
-}
-
-[role="button"], button {
+/* Buttons */
+[role="button"], .btn {
     background-color: var(--accent-bright) !important;
     border: none !important;
     color: white !important;
     border-radius: 50px !important;
     padding: 12px 30px !important;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(127, 29, 255, 0.3);
+    text-decoration: none;
+    display: inline-block;
 }
 
 [role="button"]:hover {
     background-color: var(--accent-pink) !important;
-    box-shadow: 0 6px 20px rgba(163, 41, 158, 0.4);
 }
 
-footer {
-    border-top: 1px solid var(--glass-border);
-    margin-top: 100px;
-    padding: 40px 0;
+/* Fix for links in the footer of cards */
+article footer a {
+    color: var(--accent-bright) !important;
+    text-decoration: none;
+    font-weight: 600;
 }
