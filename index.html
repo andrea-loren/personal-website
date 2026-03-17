@@ -28,9 +28,8 @@
     </style>
 </head>
 <body>
-
-    <nav class="container-fluid">
-        <ul>
+<nav class="container-fluid">
+    <div class="nav-wrapper"> <ul>
             <li><strong>ALM</strong></li>
         </ul>
         <ul>
@@ -38,41 +37,48 @@
             <li><a href="#work">Work</a></li>
             <li><a href="#contact" role="button">Contact</a></li>
         </ul>
-    </nav>
+    </div>
+</nav>
 
-    <main class="container">
-        <section class="hero">
-            <h1>Andrea "<span class="highlight">Loren</span>" Mannoia</h1>
-            <p>High School Student • Future Scientist • Ocean Lover</p>
-            <a href="#contact" role="button" class="secondary">Get in Touch</a>
-        </section>
+<main class="container">
+    <section class="hero">
+        <div class="science-icon">
+            <div class="orbit"></div>
+            <div class="dot"></div>
+        </div>
+        
+        <h1>Andrea "<span class="highlight">Loren</span>" Mannoia</h1>
+        <p>Scholar • Future Scientist • Creator</p>
+        <a href="#contact" role="button" class="secondary">Get in Touch</a>
+    </section>
 
-        <section id="work">
-            <h2>Featured</h2>
-            <div class="grid">
-                <article class="project-card">
-                    <h3>National Center for Women in Technology</h3>
-                    <p>Winner of the NCWIT Aspirations in Computing Greater New York City Affiliate Award</p>
-                    <footer><a href="#">View Details →</a></footer>
-                </article>
-                <article class="project-card">
+    <section id="work">
+        <h2>Featured Work</h2>
+        <div class="grid">
+            <article class="project-card">
+                <div class="card-body">
+                    <h3>Awards</h3>
+                    <h4>National Center for Women in Technology</h4>
+                    <p>NCWIT Aspirations in Computing Greater New York City Affiliate Award winner</p>
+                    <p><small>Awarded for leadership & passion in the field of computer science</small></p>
+                </div>
+                <footer>
+                    <a href="#" class="view-link">View Details →</a>
+                </footer>
+            </article>
+
+            <article class="project-card">
+                <div class="card-body">
                     <h3>SeaSmart Ocean Junior Ambassador</h3>
-                    <p>SeaSmart Marine Biology & Conservation</p>
+                    <h4>SeaSmart Marine Biology & Conservation</h4>
                     <p>Represent SeaSmart at local events, participate in planning, & review scholarship applications.</p>
-                    <footer><a href="#">View Details →</a></footer>
-                </article>
-            </div>
-        </section>
-
-        <footer id="contact">
-            <hr>
-            <p>© 2026 Loren Mannoia • 
-                <a href="https://linkedin.com/in/andrea-m-189483354">LinkedIn</a> • 
-                <a href="https://instagram.com/_andrea_loren">Instagram</a>
-            </p>
-        </footer>
-    </main>
-
+                </div>
+                <footer>
+                    <a href="#" class="view-link">View Details →</a>
+                </footer>
+            </article>
+        </div>
+    </section>
+</main>
 </body>
-</html>
 </html>
