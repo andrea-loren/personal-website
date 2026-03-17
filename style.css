@@ -1,4 +1,4 @@
-/* Import modern fonts */
+/* --- 1. FONTS & VARIABLES --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
 :root {
@@ -11,6 +11,7 @@
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
+/* --- 2. GLOBAL STYLES --- */
 body {
     background-color: var(--bg-dark) !important;
     background-image: radial-gradient(circle at 10% 20%, rgba(127, 29, 255, 0.15) 0%, transparent 40%),
@@ -22,12 +23,15 @@ body {
     min-height: 100vh;
 }
 
-/* Force ALL headings and text to be white */
 h1, h2, h3, h4, p, li, strong, span {
     color: var(--text-white) !important;
 }
 
-/* Glassmorphism Navigation Bar */
+.highlight {
+    color: var(--accent-bright) !important;
+}
+
+/* --- 3. NAVIGATION (The Edge Spacing Fix) --- */
 nav.container-fluid {
     position: fixed;
     top: 0;
@@ -40,64 +44,100 @@ nav.container-fluid {
     padding: 10px 0;
 }
 
-/* Hero Section */
+.nav-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px; /* This pulls ALM and Links away from the screen edges */
+}
+
+/* --- 4. HERO & ANIMATION --- */
 .hero {
     background: transparent !important;
     padding: 160px 0 60px 0;
     text-align: center;
 }
 
-h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 10px;
+h1 { font-size: 3.5rem; font-weight: 800; }
+
+.science-icon {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Glassmorphism Project Cards */
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-bright);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--accent-bright);
+}
+
+.orbit {
+    position: absolute;
+    width: 60px;
+    height: 25px;
+    border: 2px solid rgba(127, 29, 255, 0.4);
+    border-radius: 50%;
+    animation: rotate 3s linear infinite;
+}
+
+.orbit::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 25px;
+    border: 2px solid rgba(163, 41, 158, 0.4);
+    border-radius: 50%;
+    transform: rotate(120deg);
+    top: -2px; left: -2px;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- 5. CARDS (Alignment Fix) --- */
 article.project-card {
     background: var(--glass-bg) !important;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border) !important;
     border-radius: 20px !important;
     padding: 2rem !important;
-    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
     transition: all 0.4s ease;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-/* Fix for the "White Part" overlapping */
 article.project-card footer {
     background: transparent !important;
     border-top: 1px solid var(--glass-border) !important;
     padding: 1rem 0 0 0 !important;
     margin-top: 1.5rem !important;
+    display: flex;
+    justify-content: flex-start;
 }
 
-article.project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent-bright) !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Buttons */
-[role="button"], .btn {
-    background-color: var(--accent-bright) !important;
-    border: none !important;
-    color: white !important;
-    border-radius: 50px !important;
-    padding: 12px 30px !important;
-    text-decoration: none;
-    display: inline-block;
-}
-
-[role="button"]:hover {
-    background-color: var(--accent-pink) !important;
-}
-
-/* Fix for links in the footer of cards */
 article footer a {
     color: var(--accent-bright) !important;
-    text-decoration: none;
     font-weight: 600;
+    text-decoration: none;
+}
+
+/* --- 6. BUTTONS --- */
+[role="button"] {
+    background-color: var(--accent-bright) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 12px 30px !important;
 }
