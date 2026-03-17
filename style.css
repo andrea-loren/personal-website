@@ -1,1 +1,95 @@
+/* Import a sleek, modern font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
+:root {
+    --bg-dark: #120526;       /* The darkest purple from your palette */
+    --accent-deep: #4B0054;   /* Deep plum accent */
+    --accent-bright: #7F1DFF; /* Vibrant violet for buttons/highlights */
+    --accent-pink: #A3299E;   /* Magenta-purple for secondary accents */
+    --text-white: #FFFFFF;
+    --text-muted: #BDB7C5;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Updated Nav for Dark Mode */
+nav.container-fluid {
+    background: rgba(18, 5, 38, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav a, nav strong {
+    color: var(--text-white) !important;
+}
+
+/* Hero Section Adjustments */
+.hero {
+    background: transparent !important; /* Removes the light gray from Pico */
+    padding: 120px 0;
+}
+
+h1 {
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+/* Custom Highlight for your name */
+h1 span {
+    color: var(--accent-bright);
+}
+
+/* Button Styling using your palette */
+[role="button"], button {
+    background-color: var(--accent-bright) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+[role="button"]:hover {
+    background-color: var(--accent-pink) !important;
+    transform: translateY(-2px);
+}
+
+/* Card Styling for Dark Theme */
+article.project-card {
+    background-color: #1A0B2E !important; /* Slightly lighter than bg for depth */
+    border: 1px solid rgba(127, 29, 255, 0.2) !important;
+    border-radius: 16px;
+    transition: border 0.3s ease;
+}
+
+article.project-card:hover {
+    border-color: var(--accent-bright) !important;
+}
+
+article h3, article h4 {
+    color: var(--text-white);
+}
+
+article p {
+    color: var(--text-muted);
+}
+
+/* Footer Styling */
+footer {
+    padding-top: 50px;
+    color: var(--text-muted);
+}
+
+footer a {
+    color: var(--accent-bright);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
