@@ -1,95 +1,104 @@
-/* Import a sleek, modern font */
+/* Import modern fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
 :root {
-    --bg-dark: #120526;       /* The darkest purple from your palette */
-    --accent-deep: #4B0054;   /* Deep plum accent */
-    --accent-bright: #7F1DFF; /* Vibrant violet for buttons/highlights */
-    --accent-pink: #A3299E;   /* Magenta-purple for secondary accents */
+    --bg-dark: #120526;       /* Darkest purple background */
+    --accent-bright: #7F1DFF; /* Vibrant violet */
+    --accent-pink: #A3299E;   /* Magenta-purple */
     --text-white: #FFFFFF;
     --text-muted: #BDB7C5;
+    /* Glassmorphism Variables */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 body {
     background-color: var(--bg-dark);
+    /* Adding a subtle gradient glow to the background for the glass to catch */
+    background-image: radial-gradient(circle at 10% 20%, rgba(127, 29, 255, 0.1) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(163, 41, 158, 0.1) 0%, transparent 40%);
     color: var(--text-white);
     font-family: 'Inter', sans-serif;
     margin: 0;
     line-height: 1.6;
+    min-height: 100vh;
 }
 
-/* Updated Nav for Dark Mode */
+/* Glassmorphism Navigation Bar */
 nav.container-fluid {
-    background: rgba(18, 5, 38, 0.8);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(18, 5, 38, 0.7); /* Translucent dark */
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+    padding: 10px 0;
 }
 
 nav a, nav strong {
     color: var(--text-white) !important;
+    font-weight: 600;
 }
 
-/* Hero Section Adjustments */
+/* Hero Section */
 .hero {
-    background: transparent !important; /* Removes the light gray from Pico */
-    padding: 120px 0;
+    background: transparent !important;
+    padding: 140px 0 80px 0;
+    text-align: center;
 }
 
 h1 {
     font-weight: 800;
     letter-spacing: -2px;
+    color: var(--text-white); /* Name is now crisp white */
+    font-size: 3.5rem;
 }
 
-/* Custom Highlight for your name */
-h1 span {
-    color: var(--accent-bright);
+/* Glassmorphism Project Cards */
+article.project-card {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Button Styling using your palette */
+article.project-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(127, 29, 255, 0.5) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Typography & Links */
+h2, h3, h4 {
+    color: var(--text-white);
+}
+
+p {
+    color: var(--text-muted);
+}
+
 [role="button"], button {
     background-color: var(--accent-bright) !important;
     border: none !important;
     color: white !important;
+    border-radius: 50px !important;
+    padding: 12px 30px !important;
     font-weight: 600;
-    transition: transform 0.2s ease, background 0.2s ease;
+    box-shadow: 0 4px 15px rgba(127, 29, 255, 0.3);
 }
 
 [role="button"]:hover {
     background-color: var(--accent-pink) !important;
-    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(163, 41, 158, 0.4);
 }
 
-/* Card Styling for Dark Theme */
-article.project-card {
-    background-color: #1A0B2E !important; /* Slightly lighter than bg for depth */
-    border: 1px solid rgba(127, 29, 255, 0.2) !important;
-    border-radius: 16px;
-    transition: border 0.3s ease;
-}
-
-article.project-card:hover {
-    border-color: var(--accent-bright) !important;
-}
-
-article h3, article h4 {
-    color: var(--text-white);
-}
-
-article p {
-    color: var(--text-muted);
-}
-
-/* Footer Styling */
 footer {
-    padding-top: 50px;
-    color: var(--text-muted);
-}
-
-footer a {
-    color: var(--accent-bright);
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 100px;
+    padding: 40px 0;
 }
