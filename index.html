@@ -4,45 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrea (Loren) Mannoia</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    
     <style>
-        body { padding-top: 50px; }
-        .hero { text-align: center; padding: 100px 0; background: #f8f9fa; margin-bottom: 50px; border-radius: 10px;}
+        /* Ensures the content doesn't get hidden under the fixed nav */
+        body { padding-top: 80px; } 
+        .hero { text-align: center; padding: 80px 0; background: #f8f9fa; margin-bottom: 50px; border-radius: 10px;}
         .project-card { border: 1px solid #eee; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        
+        /* Simple Nav Styling */
+        nav.container-fluid {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
     </style>
 </head>
-<body class="container">
+<body>
 
-    <section class="hero">
-        <h1>Andrea "Loren" Mannoia</h1>
-        <p>Scholar • Future Scientist • Creator</p>
-        <a href="#contact" role="button">Get in Touch</a>
-    </section>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>ALM</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact" role="button">Contact</a></li>
+        </ul>
+    </nav>
 
-    <main>
-        <h2>Featured Work</h2>
-        <div class="grid">
-            <article class="project-card">
-                <h3>Awards</h3>
-                <h4>National Center for Women in Technology</h4>
-                <p>NCWIT Aspirations in Computing Greater New York City Affiliate Award winner</p>
-                <br>
-                <p>Awarded for leadership & passion in the field of computer science</p>
-                <footer><a href="#">View Project →</a></footer>
-            </article>
-            <article class="project-card">
-                <h3>SeaSmart Ocean Junior Ambassador</h3>
-                <h4>SeaSmart Marine Biology & Conservation Organization</h4>
-                <p>Represent SeaSmart at local events, participate in SeaSmart planning, & review scholarship applications</p>
-                <footer><a href="#">View Project →</a></footer>
-            </article>
-        </div>
+    <main class="container">
+        <section class="hero">
+            <h1>Andrea "Loren" Mannoia</h1>
+            <p>Scholar • Future Scientist • Creator</p>
+            <a href="#contact" role="button" class="secondary">Get in Touch</a>
+        </section>
+
+        <section id="work">
+            <h2>Featured Work</h2>
+            <div class="grid">
+                <article class="project-card">
+                    <h3>Awards</h3>
+                    <h4>National Center for Women in Technology</h4>
+                    <p>NCWIT Aspirations in Computing Greater New York City Affiliate Award winner</p>
+                    <p><small>Awarded for leadership & passion in the field of computer science</small></p>
+                    <footer><a href="#">View Details →</a></footer>
+                </article>
+                <article class="project-card">
+                    <h3>SeaSmart Ocean Junior Ambassador</h3>
+                    <h4>SeaSmart Marine Biology & Conservation</h4>
+                    <p>Represent SeaSmart at local events, participate in planning, & review scholarship applications.</p>
+                    <footer><a href="#">View Details →</a></footer>
+                </article>
+            </div>
+        </section>
+
+        <footer id="contact">
+            <hr>
+            <p>© 2026 Loren Mannoia • 
+                <a href="https://linkedin.com/in/andrea-m-189483354">LinkedIn</a> • 
+                <a href="https://instagram.com/_andrea_loren">Instagram</a>
+            </p>
+        </footer>
     </main>
 
-    <footer id="contact">
-        <hr>
-        <p>© 2026 Loren Mannoia • <a href="https://linkedin.com/in/andrea-m-189483354">LinkedIn</a> • <a href="https://instagram.com/_andrea_loren">Instagram</a></p>
-    </footer>
-
 </body>
+</html>
 </html>
