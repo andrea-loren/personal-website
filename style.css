@@ -25,7 +25,7 @@ body {
     margin: 0;
     line-height: 1.6;
     min-height: 100vh;
-    padding-top: 80px; /* Offset for fixed nav */
+    padding-top: 80px; 
 }
 
 h1, h2, h3, h4, p, li, strong, span {
@@ -82,11 +82,7 @@ nav.container-fluid {
     background: var(--accent-bright);
     border-radius: 50%;
     box-shadow: 0 0 15px var(--accent-bright);
-    
-    /* This centers the group and spreads them out horizontally */
     left: calc(50% + (var(--i) - 3.5) * 30px);
-    
-    /* Use the delay from HTML to create the wave */
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
 }
@@ -94,58 +90,37 @@ nav.container-fluid {
 .second-strand {
     background: var(--accent-pink) !important;
     box-shadow: 0 0 15px var(--accent-pink);
-    /* This strand starts halfway through the animation */
     animation-name: dna-twist-reverse !important;
 }
 
 @keyframes dna-twist {
-    0%, 100% { 
-        transform: translateY(-30px) scale(1.2); 
-        opacity: 1;
-        z-index: 10;
-    }
-    50% { 
-        transform: translateY(30px) scale(0.7); 
-        opacity: 0.4;
-        z-index: 1;
-    }
+    0%, 100% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
+    50% { transform: translateY(30px) scale(0.7); opacity: 0.4; z-index: 1; }
 }
 
 @keyframes dna-twist-reverse {
-    0%, 100% { 
-        transform: translateY(30px) scale(0.7); 
-        opacity: 0.4;
-        z-index: 1;
-    }
-    50% { 
-        transform: translateY(-30px) scale(1.2); 
-        opacity: 1;
-        z-index: 10;
-    }
+    0%, 100% { transform: translateY(30px) scale(0.7); opacity: 0.4; z-index: 1; }
+    50% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
 }
 
-/* --- 5. CARDS (The Final Alignment Fix) --- */
+/* --- 5. CARDS --- */
 article.project-card {
     background: var(--glass-bg) !important;
     backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border) !important;
     border-radius: 20px !important;
     padding: 2rem !important;
-    
-    /* Force the card to be a column flexbox */
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;
-    margin: 0 !important; /* Let the grid handle spacing */
+    margin: 0 !important;
 }
 
 .card-body {
-    /* This forces the body to take up all available vertical space */
     flex: 1 0 auto !important;
 }
 
 .card-footer {
-    /* This removes all the weird Pico.css footer styling */
     background: transparent !important;
     border-top: 1px solid var(--glass-border) !important;
     padding-top: 1.5rem !important;
@@ -161,7 +136,6 @@ article.project-card {
     display: inline-block;
 }
 
-/* Ensure the grid gives the cards equal height */
 .grid {
     align-items: stretch !important;
 }
@@ -189,48 +163,45 @@ article.project-card {
     color: var(--accent-bright);
 }
 
-/* --- 7. BUTTONS --- */
+/* --- 7. BUTTONS & CONTACT GRID --- */
 [role="button"] {
     background-color: var(--accent-bright) !important;
     border: none !important;
     border-radius: 50px !important;
     padding: 12px 30px !important;
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* --- 8. CONTACT PAGE BUTTONS FIX --- */
 .contact-grid {
     display: flex !important;
-    flex-direction: row !important; /* Forces side-by-side */
-    justify-content: center !important; /* Centers the whole group */
+    flex-direction: row !important;
+    justify-content: center !important;
     align-items: center !important;
-    gap: 40px !important; /* This creates the space between buttons */
+    gap: 40px !important; /* The extra space you wanted */
     margin-top: 40px !important;
     width: 100%;
 }
 
 .contact-btn {
-    width: auto !important; /* Stops the stretching */
-    min-width: 200px !important; /* Ensures they look uniform */
+    width: auto !important;
+    min-width: 200px !important;
     display: inline-flex !important;
     justify-content: center !important;
-    margin: 0 !important; /* Clears any default Pico margins */
+    margin: 0 !important;
     text-decoration: none !important;
 }
 
-/* Styling the second button with your magenta accent */
 .contact-btn.secondary {
     background-color: var(--accent-pink) !important;
     box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
 }
 
-/* Smooth hover effect */
 .contact-btn:hover {
     transform: translateY(-3px);
-    transition: transform 0.2s ease;
     filter: brightness(1.1);
 }
 
-/* Mobile Fix: If the screen is too small, stack them nicely */
+/* Mobile Fix */
 @media (max-width: 600px) {
     .contact-grid {
         flex-direction: column !important;
