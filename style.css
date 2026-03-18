@@ -63,56 +63,60 @@ nav.container-fluid {
 
 .dna-wrapper {
     position: relative;
-    height: 80px; /* Space for the twist */
+    height: 100px; 
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .dna-dot {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     background: var(--accent-bright);
     border-radius: 50%;
     box-shadow: 0 0 15px var(--accent-bright);
-    /* The horizontal spacing is controlled by the --i variable */
-    left: calc(50% + (var(--i) - 3.5) * 25px);
+    
+    /* This centers the group and spreads them out horizontally */
+    left: calc(50% + (var(--i) - 3.5) * 30px);
+    
+    /* Use the delay from HTML to create the wave */
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
 }
 
-/* The second strand moves exactly opposite to the first */
 .second-strand {
-    background: var(--accent-pink);
+    background: var(--accent-pink) !important;
     box-shadow: 0 0 15px var(--accent-pink);
-    animation-name: dna-twist-reverse;
+    /* This strand starts halfway through the animation */
+    animation-name: dna-twist-reverse !important;
 }
 
 @keyframes dna-twist {
     0%, 100% { 
-        transform: translateY(-25px) scale(1); 
-        z-index: 1; 
+        transform: translateY(-30px) scale(1.2); 
         opacity: 1;
+        z-index: 10;
     }
     50% { 
-        transform: translateY(25px) scale(0.6); 
-        z-index: -1; 
-        opacity: 0.5;
+        transform: translateY(30px) scale(0.7); 
+        opacity: 0.4;
+        z-index: 1;
     }
 }
 
 @keyframes dna-twist-reverse {
     0%, 100% { 
-        transform: translateY(25px) scale(0.6); 
-        z-index: -1; 
-        opacity: 0.5;
+        transform: translateY(30px) scale(0.7); 
+        opacity: 0.4;
+        z-index: 1;
     }
     50% { 
-        transform: translateY(-25px) scale(1); 
-        z-index: 1; 
+        transform: translateY(-30px) scale(1.2); 
         opacity: 1;
+        z-index: 10;
     }
 }
 
