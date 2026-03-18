@@ -63,7 +63,7 @@ nav.container-fluid {
 
 .dna-wrapper {
     position: relative;
-    height: 100px; 
+    height: 120px; 
     width: 100%;
     display: flex;
     justify-content: center;
@@ -78,9 +78,26 @@ nav.container-fluid {
     background: var(--accent-bright);
     border-radius: 50%;
     box-shadow: 0 0 15px var(--accent-bright);
-    left: calc(50% + (var(--i) - 3.5) * 30px);
+    left: calc(50% + (var(--i) - 3.5) * 35px);
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
+}
+
+/* The Connector Lines (Rungs) */
+.dna-dot::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    /* This height stretches to reach the other strand */
+    height: 60px; 
+    background: linear-gradient(to bottom, var(--accent-bright), var(--accent-pink));
+    opacity: 0.3;
+    z-index: -1;
+    transform-origin: top;
+    /* The line only needs to be attached to one strand to bridge the gap */
+    display: block;
 }
 
 .second-strand {
@@ -89,14 +106,35 @@ nav.container-fluid {
     animation-name: dna-twist-reverse !important;
 }
 
+/* We hide the lines on the second strand so we don't have double lines */
+.second-strand::after {
+    display: none;
+}
+
 @keyframes dna-twist {
-    0%, 100% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
-    50% { transform: translateY(30px) scale(0.7); opacity: 0.4; z-index: 1; }
+    0%, 100% { 
+        transform: translateY(-30px) scale(1.2); 
+        opacity: 1;
+        z-index: 10;
+    }
+    50% { 
+        transform: translateY(30px) scale(0.7); 
+        opacity: 0.4;
+        z-index: 1;
+    }
 }
 
 @keyframes dna-twist-reverse {
-    0%, 100% { transform: translateY(30px) scale(0.7); opacity: 0.4; z-index: 1; }
-    50% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
+    0%, 100% { 
+        transform: translateY(30px) scale(0.7); 
+        opacity: 0.4;
+        z-index: 1;
+    }
+    50% { 
+        transform: translateY(-30px) scale(1.2); 
+        opacity: 1;
+        z-index: 10;
+    }
 }
 
 /* --- 5. CARDS (DYNAMIC HEIGHT & PINK HOVER) --- */
