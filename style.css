@@ -92,24 +92,33 @@ article.project-card {
     border: 1px solid var(--glass-border) !important;
     border-radius: 20px !important;
     padding: 2rem !important;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin-bottom: 1rem;
+    
+    /* THE FIX: Force flexbox on the card itself */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    
+    /* Ensure cards in the same row are the same height */
+    height: 100% !important; 
+    min-height: 300px; /* Adjust this if you want taller cards */
+    
+    margin-bottom: 0; /* Let the grid handle spacing */
     text-align: left;
 }
 
 .card-body {
-    flex-grow: 1; /* Pushes the footer to the bottom */
+    /* This tells the body to take up all available space, 
+       pushing the footer to the bottom */
+    flex: 1 0 auto !important; 
 }
 
 article.project-card footer {
     background: transparent !important;
     border-top: 1px solid var(--glass-border) !important;
-    padding: 1.5rem 0 0 0 !important;
-    margin-top: 1rem !important;
-    display: flex;
-    justify-content: flex-start; /* Aligns View Details to the left */
+    padding: 1rem 0 0 0 !important;
+    margin-top: auto !important; /* Final push to the bottom */
+    display: flex !important;
+    justify-content: flex-start !important;
 }
 
 article footer a.view-link {
