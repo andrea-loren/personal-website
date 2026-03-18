@@ -54,35 +54,66 @@ nav.container-fluid {
     padding: 0 40px;
 }
 
-/* --- 4. HERO & BIOLOGY ANIMATION --- */
+/* --- 4. HERO & DNA TWIST ANIMATION --- */
 .hero {
     background: transparent !important;
     padding: 100px 0 60px 0;
     text-align: center;
 }
 
-h1 { font-size: 3.5rem; font-weight: 800; }
-
-.dna-container {
+.dna-wrapper {
+    position: relative;
+    height: 80px; /* Space for the twist */
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
 .dna-dot {
-    width: 12px;
-    height: 12px;
+    position: absolute;
+    width: 10px;
+    height: 10px;
     background: var(--accent-bright);
     border-radius: 50%;
     box-shadow: 0 0 15px var(--accent-bright);
-    animation: dna-bounce 1.5s ease-in-out infinite;
-    animation-delay: calc(var(--i) * 0.1s);
+    /* The horizontal spacing is controlled by the --i variable */
+    left: calc(50% + (var(--i) - 3.5) * 25px);
+    animation: dna-twist 2s ease-in-out infinite;
+    animation-delay: var(--d);
 }
 
-@keyframes dna-bounce {
-    0%, 100% { transform: translateY(0); opacity: 0.5; }
-    50% { transform: translateY(-30px); background: var(--accent-pink); opacity: 1; box-shadow: 0 0 20px var(--accent-pink); }
+/* The second strand moves exactly opposite to the first */
+.second-strand {
+    background: var(--accent-pink);
+    box-shadow: 0 0 15px var(--accent-pink);
+    animation-name: dna-twist-reverse;
+}
+
+@keyframes dna-twist {
+    0%, 100% { 
+        transform: translateY(-25px) scale(1); 
+        z-index: 1; 
+        opacity: 1;
+    }
+    50% { 
+        transform: translateY(25px) scale(0.6); 
+        z-index: -1; 
+        opacity: 0.5;
+    }
+}
+
+@keyframes dna-twist-reverse {
+    0%, 100% { 
+        transform: translateY(25px) scale(0.6); 
+        z-index: -1; 
+        opacity: 0.5;
+    }
+    50% { 
+        transform: translateY(-25px) scale(1); 
+        z-index: 1; 
+        opacity: 1;
+    }
 }
 
 /* --- 5. CARDS (The Final Alignment Fix) --- */
