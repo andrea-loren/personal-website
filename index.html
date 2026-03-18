@@ -6,54 +6,40 @@
     <title>ALM: Home</title>
     
     <link rel="stylesheet" href="style.css">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    
-    <style>
-        /* Ensures the content doesn't get hidden under the fixed nav */
-        body { padding-top: 80px; } 
-        .hero { text-align: center; padding: 80px 0; background: #f8f9fa; margin-bottom: 50px; border-radius: 10px;}
-        .project-card { border: 1px solid #eee; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        
-        /* Simple Nav Styling */
-        nav.container-fluid {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid #eee;
-        }
-    </style>
 </head>
 <body>
+
 <nav class="container-fluid">
-    <div class="nav-wrapper"> <ul>
+    <div class="nav-wrapper"> 
+        <ul>
             <li><strong>ALM</strong></li>
         </ul>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#work">Work</a></li>
-            <li><a href="#contact" role="button">Contact</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
 </nav>
 
 <main class="container">
     <section class="hero">
-        <div class="science-icon">
-            <div class="orbit"></div>
-            <div class="dot"></div>
+        <div class="dna-container">
+            <div class="dna-dot" style="--i:1"></div>
+            <div class="dna-dot" style="--i:2"></div>
+            <div class="dna-dot" style="--i:3"></div>
+            <div class="dna-dot" style="--i:4"></div>
+            <div class="dna-dot" style="--i:5"></div>
         </div>
         
-        <h1>Andrea <span class="highlight">Loren</span> Mannoia</h1>
+        <h1>Andrea "<span class="highlight">Loren</span>" Mannoia</h1>
         <p>High School Student • Ocean Advocate • Future Scientist</p>
         <a href="#contact" role="button" class="secondary">Get in Touch</a>
     </section>
 
     <section id="work">
-        <h2>Featured</h2>
+        <h2>Featured Work</h2>
         <div class="grid">
             <article class="project-card">
                 <div class="card-body">
@@ -77,5 +63,18 @@
         </div>
     </section>
 </main>
+
+<footer id="contact" class="container">
+    <div class="footer-content">
+        <hr>
+        <div class="footer-links">
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/andrea-m-189483354" target="_blank">LinkedIn</a>
+            <a href="https://instagram.com/_andrea_loren" target="_blank">Instagram</a>
+        </div>
+        <p><small>© 2026 Andrea Loren Mannoia</small></p>
+    </div>
+</footer>
+
 </body>
 </html>
