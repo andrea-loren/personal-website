@@ -100,34 +100,45 @@ nav.container-fluid {
 }
 
 /* --- 5. CARDS (DYNAMIC HEIGHT & PINK HOVER) --- */
+.grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    /* This ensures all cards in the same row stretch to match the tallest one */
+    align-items: stretch !important; 
+}
+
 article.project-card {
     background: var(--glass-bg) !important;
     backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border) !important;
     border-radius: 20px !important;
     padding: 2rem !important;
+    margin: 0 !important;
     
-    /* Flexbox magic starts here */
+    /* Flexbox settings to manage internal spacing */
     display: flex !important;
     flex-direction: column !important;
-    height: 100% !important; /* Makes all cards in a row equal height */
+    height: 100% !important; 
     transition: all 0.4s ease !important;
 }
 
 .card-body {
-    /* This tells the body to grow and take up all empty space */
-    flex: 1 0 auto !important;
+    /* This pushes the footer down by absorbing all extra space */
+    flex-grow: 1 !important;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-footer {
-    /* This pins the footer to the bottom */
+    /* Puts the footer at the very bottom of the card */
     margin-top: auto !important; 
     padding-top: 1.5rem !important;
     border-top: 1px solid var(--glass-border) !important;
     background: transparent !important;
 }
 
-/* The Pink Hover Effect */
+/* Pink Hover Effect */
 article.project-card:hover {
     transform: translateY(-10px) scale(1.01) !important;
     border-color: var(--accent-pink) !important;
@@ -135,17 +146,10 @@ article.project-card:hover {
 }
 
 .view-link {
-    color: var(--accent-bright) !important;
+    color: var(--accent-bright) !important; /* Stays violet */
     font-weight: 600;
     text-decoration: none !important;
-    transition: color 0.3s ease;
 }
-
-/* Optional: Make the link turn pink when the whole card is hovered */
-article.project-card:hover .view-link {
-    color: var(--accent-pink) !important;
-}
-
 /* --- 6. FOOTER --- */
 .footer-content {
     text-align: center;
