@@ -85,7 +85,7 @@ h1 { font-size: 3.5rem; font-weight: 800; }
     50% { transform: translateY(-30px); background: var(--accent-pink); opacity: 1; box-shadow: 0 0 20px var(--accent-pink); }
 }
 
-/* --- 5. CARDS (Alignment Fix) --- */
+/* --- 5. CARDS (The Final Alignment Fix) --- */
 article.project-card {
     background: var(--glass-bg) !important;
     backdrop-filter: blur(10px);
@@ -93,38 +93,38 @@ article.project-card {
     border-radius: 20px !important;
     padding: 2rem !important;
     
-    /* THE FIX: Force flexbox on the card itself */
+    /* Force the card to be a column flexbox */
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
-    
-    /* Ensure cards in the same row are the same height */
-    height: 100% !important; 
-    min-height: 300px; /* Adjust this if you want taller cards */
-    
-    margin-bottom: 0; /* Let the grid handle spacing */
-    text-align: left;
+    height: 100% !important;
+    margin: 0 !important; /* Let the grid handle spacing */
 }
 
 .card-body {
-    /* This tells the body to take up all available space, 
-       pushing the footer to the bottom */
-    flex: 1 0 auto !important; 
+    /* This forces the body to take up all available vertical space */
+    flex: 1 0 auto !important;
 }
 
-article.project-card footer {
+.card-footer {
+    /* This removes all the weird Pico.css footer styling */
     background: transparent !important;
     border-top: 1px solid var(--glass-border) !important;
-    padding: 1rem 0 0 0 !important;
-    margin-top: auto !important; /* Final push to the bottom */
-    display: flex !important;
-    justify-content: flex-start !important;
+    padding-top: 1.5rem !important;
+    margin-top: 1rem !important;
+    display: block !important;
+    text-align: left !important;
 }
 
-article footer a.view-link {
+.view-link {
     color: var(--accent-bright) !important;
     font-weight: 600;
     text-decoration: none !important;
+    display: inline-block;
+}
+
+/* Ensure the grid gives the cards equal height */
+.grid {
+    align-items: stretch !important;
 }
 
 /* --- 6. FOOTER --- */
