@@ -33,7 +33,7 @@ h1, h2, h3, h4, p, li, strong, span {
     color: var(--accent-bright) !important;
 }
 
-/* --- 3. NAVIGATION --- */
+/* --- 3. NAVIGATION (FORCED ALIGNMENT) --- */
 nav.container-fluid {
     position: fixed;
     top: 0;
@@ -42,17 +42,30 @@ nav.container-fluid {
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border) !important;
     z-index: 1000;
+    /* This stops Pico from centering the inner text */
+    text-align: left !important; 
 }
 
 .nav-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center;
     padding: 10px 40px;
 }
 
-/* --- 4. DNA HELIX ANIMATION --- */
+/* Ensure the lists inside don't stack vertically */
+.nav-wrapper ul {
+    display: flex !important;
+    flex-direction: row !important;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+/* --- 4. DNA HELIX ANIMATION (WITH SCALE RUNGS) --- */
 .dna-wrapper {
     position: relative;
     height: 120px;
@@ -75,18 +88,20 @@ nav.container-fluid {
     animation-delay: var(--d);
 }
 
-/* The Rungs (Connecting Lines) */
 .dna-dot::before {
     content: "";
     position: absolute;
-    top: 6px; /* Half of dot height */
-    left: 6px; /* Half of dot width */
+    top: 6px;
+    left: 5px;
     width: 2px;
-    height: 60px; /* Distance between strands */
+    height: 60px;
     background: linear-gradient(to bottom, var(--accent-bright), var(--accent-pink));
-    opacity: 0.2;
+    opacity: 0.4;
     z-index: -1;
     transform-origin: top;
+    /* This animation makes the rung "stretch" between the dots */
+    animation: rung-stretch 2s ease-in-out infinite;
+    animation-delay: var(--d);
 }
 
 .second-strand {
@@ -95,7 +110,7 @@ nav.container-fluid {
     animation-name: dna-twist-reverse !important;
 }
 
-.second-strand::before { display: none; } /* Only one set of lines */
+.second-strand::before { display: none; }
 
 @keyframes dna-twist {
     0%, 100% { transform: translateY(-30px) scale(1.2); opacity: 1; }
@@ -105,6 +120,11 @@ nav.container-fluid {
 @keyframes dna-twist-reverse {
     0%, 100% { transform: translateY(30px) scale(0.7); opacity: 0.4; }
     50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
+}
+
+@keyframes rung-stretch {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0); } /* Rung disappears when dots cross */
 }
 
 /* --- 5. CARDS --- */
