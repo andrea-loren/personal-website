@@ -33,39 +33,44 @@ h1, h2, h3, h4, p, li, strong, span {
     color: var(--accent-bright) !important;
 }
 
-/* --- 3. NAVIGATION (FORCED ALIGNMENT) --- */
+/* --- 3. NAVIGATION (LEFT/RIGHT SPLIT) --- */
 nav.container-fluid {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 5, 38, 0.8) !important;
+    background: rgba(18, 5, 38, 0.9) !important;
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border) !important;
     z-index: 1000;
-    /* This stops Pico from centering the inner text */
-    text-align: left !important; 
 }
 
 .nav-wrapper {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto !important;
     display: flex !important;
-    justify-content: space-between !important;
-    align-items: center;
-    padding: 10px 40px;
+    /* This forces the two <ul> groups to opposite walls */
+    justify-content: space-between !important; 
+    align-items: center !important;
+    padding: 10px 40px !important;
 }
 
-/* Ensure the lists inside don't stack vertically */
+/* Force Pico to stop stacking menu items */
 .nav-wrapper ul {
     display: flex !important;
     flex-direction: row !important;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 20px;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    text-align: left !important;
 }
 
-/* --- 4. DNA HELIX ANIMATION (WITH SCALE RUNGS) --- */
+.nav-wrapper ul li {
+    padding: 0 10px !important;
+    display: inline-block !important;
+}
+
+/* --- 4. DNA HELIX (PRECISION RUNG FIX) --- */
 .dna-wrapper {
     position: relative;
     height: 120px;
@@ -74,6 +79,8 @@ nav.container-fluid {
     justify-content: center;
     align-items: center;
     margin: 40px 0;
+    /* This keeps the lines from leaking out of the hero */
+    overflow: visible; 
 }
 
 .dna-dot {
@@ -86,21 +93,23 @@ nav.container-fluid {
     left: calc(50% + (var(--i) - 3.5) * 40px);
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
+    display: flex;
+    justify-content: center;
 }
 
 .dna-dot::before {
     content: "";
     position: absolute;
-    top: 6px;
-    left: 5px;
+    /* Center the line exactly in the middle of the dot */
+    top: 6px; 
     width: 2px;
-    height: 60px;
+    height: 60px; 
     background: linear-gradient(to bottom, var(--accent-bright), var(--accent-pink));
-    opacity: 0.4;
+    opacity: 0.3;
     z-index: -1;
-    transform-origin: top;
-    /* This animation makes the rung "stretch" between the dots */
-    animation: rung-stretch 2s ease-in-out infinite;
+    /* This makes the line shrink toward its own center */
+    transform-origin: center;
+    animation: rung-sync 2s ease-in-out infinite;
     animation-delay: var(--d);
 }
 
@@ -110,21 +119,23 @@ nav.container-fluid {
     animation-name: dna-twist-reverse !important;
 }
 
-.second-strand::before { display: none; }
+/* Hide rungs on the second strand so they don't double up */
+.second-strand::before { display: none !important; }
 
 @keyframes dna-twist {
-    0%, 100% { transform: translateY(-30px) scale(1.2); opacity: 1; }
-    50% { transform: translateY(30px) scale(0.7); opacity: 0.4; }
+    0%, 100% { transform: translateY(-30px) scale(1.2); z-index: 10; opacity: 1; }
+    50% { transform: translateY(30px) scale(0.8); z-index: 1; opacity: 0.6; }
 }
 
 @keyframes dna-twist-reverse {
-    0%, 100% { transform: translateY(30px) scale(0.7); opacity: 0.4; }
-    50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
+    0%, 100% { transform: translateY(30px) scale(0.8); z-index: 1; opacity: 0.6; }
+    50% { transform: translateY(-30px) scale(1.2); z-index: 10; opacity: 1; }
 }
 
-@keyframes rung-stretch {
-    0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(0); } /* Rung disappears when dots cross */
+@keyframes rung-sync {
+    0%, 100% { transform: scaleY(1); opacity: 0.3; }
+    45%, 55% { transform: scaleY(0.1); opacity: 0; } /* Hide line as dots cross */
+    50% { transform: scaleY(0); opacity: 0; }
 }
 
 /* --- 5. CARDS --- */
