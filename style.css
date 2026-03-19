@@ -6,11 +6,12 @@
     --accent-bright: #7F1DFF; 
     --accent-pink: #A3299E;   
     --text-white: #FFFFFF;
+    --text-muted: #BDB7C5;
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-/* --- 2. GLOBAL RESET --- */
+/* --- 2. GLOBAL STYLES --- */
 body {
     background-color: var(--bg-dark) !important;
     background-image: radial-gradient(circle at 10% 20%, rgba(127, 29, 255, 0.15) 0%, transparent 40%),
@@ -18,11 +19,13 @@ body {
     color: var(--text-white) !important;
     font-family: 'Inter', sans-serif;
     margin: 0;
-    padding-top: 100px;
+    line-height: 1.6;
     min-height: 100vh;
+    padding-top: 80px;
+    text-align: center; /* Ensures global centering */
 }
 
-h1, h2, h3, h4, p, li, strong, span, a {
+h1, h2, h3, h4, p, li, strong, span {
     color: var(--text-white) !important;
 }
 
@@ -30,35 +33,26 @@ h1, h2, h3, h4, p, li, strong, span, a {
     color: var(--accent-bright) !important;
 }
 
-/* --- 3. NAVIGATION FIX --- */
+/* --- 3. NAVIGATION --- */
 nav.container-fluid {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 5, 38, 0.9) !important;
+    background: rgba(18, 5, 38, 0.8) !important;
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border) !important;
-    z-index: 999;
+    z-index: 1000;
 }
 
 .nav-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center;
-    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
 }
 
-.nav-wrapper ul {
-    display: flex !important;
-    list-style: none !important;
-    margin: 0;
-    padding: 0;
-    gap: 20px;
-}
-
-/* --- 4. DNA HELIX --- */
+/* --- 4. DNA HELIX ANIMATION --- */
 .dna-wrapper {
     position: relative;
     height: 120px;
@@ -66,102 +60,131 @@ nav.container-fluid {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 40px 0;
 }
 
 .dna-dot {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     background: var(--accent-bright);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent-bright);
+    box-shadow: 0 0 15px var(--accent-bright);
     left: calc(50% + (var(--i) - 3.5) * 40px);
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
 }
 
-/* The Rungs */
+/* The Rungs (Connecting Lines) */
 .dna-dot::before {
     content: "";
     position: absolute;
-    top: 5px;
-    left: 4px;
+    top: 6px; /* Half of dot height */
+    left: 6px; /* Half of dot width */
     width: 2px;
-    height: 60px;
+    height: 60px; /* Distance between strands */
     background: linear-gradient(to bottom, var(--accent-bright), var(--accent-pink));
-    opacity: 0.3;
+    opacity: 0.2;
+    z-index: -1;
+    transform-origin: top;
 }
 
 .second-strand {
     background: var(--accent-pink) !important;
+    box-shadow: 0 0 15px var(--accent-pink);
     animation-name: dna-twist-reverse !important;
 }
 
-.second-strand::before { display: none; }
+.second-strand::before { display: none; } /* Only one set of lines */
 
 @keyframes dna-twist {
-    0%, 100% { transform: translateY(-30px); opacity: 1; }
-    50% { transform: translateY(30px); opacity: 0.4; }
+    0%, 100% { transform: translateY(-30px) scale(1.2); opacity: 1; }
+    50% { transform: translateY(30px) scale(0.7); opacity: 0.4; }
 }
 
 @keyframes dna-twist-reverse {
-    0%, 100% { transform: translateY(30px); opacity: 0.4; }
-    50% { transform: translateY(-30px); opacity: 1; }
+    0%, 100% { transform: translateY(30px) scale(0.7); opacity: 0.4; }
+    50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
 }
 
 /* --- 5. CARDS --- */
-.hero { text-align: center; }
+.grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: stretch !important;
+    text-align: left; /* Keep card text left-aligned */
+}
 
 article.project-card {
     background: var(--glass-bg) !important;
+    backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border) !important;
-    border-radius: 15px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    text-align: left;
+    border-radius: 20px !important;
+    padding: 2rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    transition: all 0.4s ease !important;
 }
 
 article.project-card:hover {
+    transform: translateY(-10px);
     border-color: var(--accent-pink) !important;
-    box-shadow: 0 0 20px rgba(163, 41, 158, 0.3);
+    box-shadow: 0 0 25px rgba(163, 41, 158, 0.4) !important;
 }
+
+.card-body { flex-grow: 1 !important; }
 
 .card-footer {
-    margin-top: auto;
-    padding-top: 10px;
-    border-top: 1px solid var(--glass-border);
+    margin-top: auto !important;
+    padding-top: 1.5rem !important;
+    border-top: 1px solid var(--glass-border) !important;
 }
 
-/* --- 6. FOOTER FIX --- */
-footer.container {
-    width: 100%;
-    text-align: center !important;
-    padding: 40px 0;
-    margin-top: 50px;
+.view-link {
+    color: var(--accent-bright) !important;
+    font-weight: 600;
+    text-decoration: none !important;
 }
 
+/* --- 6. FOOTER --- */
 .footer-content {
-    display: block !important;
-    width: 100%;
+    text-align: center;
+    padding: 60px 0;
 }
 
 /* --- 7. BUTTONS --- */
 #hero-glow-btn, .contact-btn, [role="button"] {
     background-color: var(--accent-bright) !important;
     border: none !important;
-    border-radius: 50px !important;
-    padding: 10px 25px !important;
-    display: inline-flex !important;
     color: white !important;
+    border-radius: 50px !important;
+    padding: 12px 30px !important;
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
     text-decoration: none !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 0 15px rgba(127, 29, 255, 0.4) !important;
 }
 
+#hero-glow-btn:hover, .contact-btn:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 0 30px rgba(127, 29, 255, 0.7) !important;
+}
+
+/* --- 8. CONTACT GRID --- */
 .contact-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin: 30px 0;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 40px !important;
+    width: 100% !important;
+    margin: 40px 0 !important;
+}
+
+.contact-btn.secondary { background-color: var(--accent-pink) !important; }
+
+@media (max-width: 600px) {
+    .contact-grid { flex-direction: column; gap: 20px; }
 }
