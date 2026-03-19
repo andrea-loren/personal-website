@@ -6,7 +6,6 @@
     --accent-bright: #7F1DFF; 
     --accent-pink: #A3299E;   
     --text-white: #FFFFFF;
-    --text-muted: #BDB7C5;
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
 }
@@ -19,58 +18,48 @@ body {
     color: var(--text-white) !important;
     font-family: 'Inter', sans-serif;
     margin: 0;
-    line-height: 1.6;
-    min-height: 100vh;
     padding-top: 80px;
+    min-height: 100vh;
 }
 
-h1, h2, h3, h4, p, li, strong, span {
-    color: var(--text-white) !important;
-}
-
-.highlight {
-    color: var(--accent-bright) !important;
-}
-
-/* --- 3. NAVIGATION (FIXED ALIGNMENT) --- */
+/* --- 3. NAVIGATION (FORCE SIDES) --- */
 nav.container-fluid {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 5, 38, 0.9) !important;
+    background: rgba(18, 5, 38, 0.95) !important;
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border) !important;
-    z-index: 1000;
-    /* This ensures the nav items don't inherit global centering */
-    text-align: left !important; 
+    z-index: 9999;
+    padding: 0 !important;
 }
 
 .nav-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between; /* Logo Left, Links Right */
-    align-items: center;
-    padding: 10px 40px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; /* Pushes Logo Left, Links Right */
+    align-items: center !important;
+    padding: 10px 40px !important;
+    text-align: left !important;
 }
 
 .nav-wrapper ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 20px;
+    display: flex !important;
+    flex-direction: row !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
 }
 
-/* --- 4. DNA HELIX ANIMATION (RUNG FIX) --- */
+/* --- 4. DNA HELIX (STABLE RUNGS) --- */
 .dna-wrapper {
     position: relative;
-    height: 140px; 
+    height: 150px;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 40px 0;
+    overflow: visible;
 }
 
 .dna-dot {
@@ -80,22 +69,21 @@ nav.container-fluid {
     background: var(--accent-bright);
     border-radius: 50%;
     box-shadow: 0 0 15px var(--accent-bright);
-    left: calc(50% + (var(--i) - 3.5) * 45px); /* Slightly wider spacing */
+    left: calc(50% + (var(--i) - 3.5) * 45px);
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
 }
 
-/* The Connector Rungs */
+/* The Rungs */
 .dna-dot::before {
     content: "";
     position: absolute;
-    top: 6px; 
+    top: 6px;
     left: 5px;
     width: 2px;
-    /* This height connects the two dots as they oscillate */
-    height: 60px; 
+    height: 70px; /* Bridge length */
     background: linear-gradient(to bottom, var(--accent-bright), var(--accent-pink));
-    opacity: 0.25;
+    opacity: 0.3;
     z-index: -1;
 }
 
@@ -105,30 +93,20 @@ nav.container-fluid {
     animation-name: dna-twist-reverse !important;
 }
 
-/* Hide lines on second strand to prevent overlap */
-.second-strand::before {
-    display: none;
-}
+.second-strand::before { display: none !important; }
 
 @keyframes dna-twist {
-    0%, 100% { transform: translateY(-35px) scale(1.2); opacity: 1; z-index: 10; }
-    50% { transform: translateY(35px) scale(0.7); opacity: 0.4; z-index: 1; }
+    0%, 100% { transform: translateY(-35px) scale(1.1); opacity: 1; }
+    50% { transform: translateY(35px) scale(0.7); opacity: 0.4; }
 }
 
 @keyframes dna-twist-reverse {
-    0%, 100% { transform: translateY(35px) scale(0.7); opacity: 0.4; z-index: 1; }
-    50% { transform: translateY(-35px) scale(1.2); opacity: 1; z-index: 10; }
+    0%, 100% { transform: translateY(35px) scale(0.7); opacity: 0.4; }
+    50% { transform: translateY(-35px) scale(1.1); opacity: 1; }
 }
 
-/* --- 5. CARDS --- */
+/* --- 5. CARDS & HERO --- */
 .hero { text-align: center; }
-
-.grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    align-items: stretch !important;
-}
 
 article.project-card {
     background: var(--glass-bg) !important;
@@ -140,59 +118,44 @@ article.project-card {
     flex-direction: column !important;
     height: 100% !important;
     text-align: left;
-    transition: all 0.4s ease !important;
+    transition: all 0.3s ease;
 }
 
 article.project-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     border-color: var(--accent-pink) !important;
-    box-shadow: 0 0 25px rgba(163, 41, 158, 0.4) !important;
+    box-shadow: 0 0 20px rgba(163, 41, 158, 0.3) !important;
 }
-
-.card-body { flex-grow: 1 !important; }
 
 .card-footer {
     margin-top: auto !important;
-    padding-top: 1.5rem !important;
+    padding-top: 1rem !important;
     border-top: 1px solid var(--glass-border) !important;
 }
 
-.view-link {
-    color: var(--accent-bright) !important;
-    font-weight: 600;
-    text-decoration: none !important;
-}
-
-/* --- 6. FOOTER --- */
-.footer-content {
-    text-align: center;
-    padding: 60px 0;
-}
-
-/* --- 7. BUTTONS & CONTACT --- */
+/* --- 6. BUTTONS --- */
 #hero-glow-btn, .contact-btn {
     background-color: var(--accent-bright) !important;
     border: none !important;
-    color: white !important;
     border-radius: 50px !important;
     padding: 12px 30px !important;
     display: inline-flex !important;
-    margin: 20px auto;
+    color: white !important;
     text-decoration: none !important;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     box-shadow: 0 0 15px rgba(127, 29, 255, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+
+#hero-glow-btn:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 0 30px rgba(127, 29, 255, 0.7) !important;
 }
 
 .contact-grid {
     display: flex !important;
     justify-content: center !important;
     gap: 40px !important;
-    width: 100% !important;
     margin: 40px 0 !important;
 }
 
 .contact-btn.secondary { background-color: var(--accent-pink) !important; }
-
-@media (max-width: 600px) {
-    .contact-grid { flex-direction: column; align-items: center; gap: 20px; }
-}
