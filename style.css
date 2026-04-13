@@ -48,10 +48,25 @@ nav.container-fluid {
     max-width: 1200px;
     margin: 0 auto !important;
     display: flex !important;
-    /* This forces the two <ul> groups to opposite walls */
     justify-content: space-between !important; 
     align-items: center !important;
     padding: 10px 40px !important;
+}
+
+/* Ensure the first list (logo) has no extra left padding */
+.nav-wrapper ul:first-child {
+    padding-left: 0 !important;
+}
+
+/* Ensure the second list (links) has no extra right padding */
+.nav-wrapper ul:last-child {
+    padding-right: 0 !important;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 !important; /* Removes Pico's default link padding */
 }
 
 /* Force Pico to stop stacking menu items */
