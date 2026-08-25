@@ -11,6 +11,10 @@
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
+h2 {
+    text-align: center;
+}
+
 /* --- 2. GLOBAL STYLES --- */
 body {
     background-color: var(--bg-dark) !important;
@@ -21,8 +25,7 @@ body {
     margin: 0;
     line-height: 1.6;
     min-height: 100vh;
-    padding-top: 80px;
-    text-align: center; /* Ensures global centering */
+    padding-top: 80px; 
 }
 
 h1, h2, h3, h4, p, li, strong, span {
@@ -33,69 +36,43 @@ h1, h2, h3, h4, p, li, strong, span {
     color: var(--accent-bright) !important;
 }
 
-/* --- 3. NAVIGATION (LEFT/RIGHT SPLIT) --- */
+/* --- 3. NAVIGATION --- */
 nav.container-fluid {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 5, 38, 0.9) !important;
-    backdrop-filter: blur(15px);
+    background: rgba(18, 5, 38, 0.8) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
     border-bottom: 1px solid var(--glass-border) !important;
     z-index: 1000;
+    padding: 10px 0;
 }
 
 .nav-wrapper {
     max-width: 1200px;
-    margin: 0 auto !important;
-    display: flex !important;
-    justify-content: space-between !important; 
-    align-items: center !important;
-    padding: 10px 40px !important;
-}
-
-/* Ensure the first list (logo) has no extra left padding */
-.nav-wrapper ul:first-child {
-    padding-left: 0 !important;
-}
-
-/* Ensure the second list (links) has no extra right padding */
-.nav-wrapper ul:last-child {
-    padding-right: 0 !important;
-}
-
-.nav-logo {
+    margin: 0 auto;
     display: flex;
-    align-items: center;
-    padding: 0 !important; /* Removes Pico's default link padding */
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px;
 }
 
-/* Force Pico to stop stacking menu items */
-.nav-wrapper ul {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    text-align: left !important;
+/* --- 4. HERO & DNA TWIST ANIMATION --- */
+.hero {
+    background: transparent !important;
+    padding: 100px 0 60px 0;
+    text-align: center;
 }
 
-.nav-wrapper ul li {
-    padding: 0 10px !important;
-    display: inline-block !important;
-}
-
-/* --- 4. DNA HELIX (PRECISION RUNG FIX) --- */
 .dna-wrapper {
     position: relative;
-    height: 120px;
+    height: 100px; 
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px 0;
-    /* This keeps the lines from leaking out of the hero */
-    overflow: visible; 
+    margin-bottom: 30px;
 }
 
 .dna-dot {
@@ -105,26 +82,8 @@ nav.container-fluid {
     background: var(--accent-bright);
     border-radius: 50%;
     box-shadow: 0 0 15px var(--accent-bright);
-    left: calc(50% + (var(--i) - 3.5) * 40px);
+    left: calc(50% + (var(--i) - 3.5) * 30px);
     animation: dna-twist 2s ease-in-out infinite;
-    animation-delay: var(--d);
-    display: flex;
-    justify-content: center;
-}
-
-.dna-dot::before {
-    content: "";
-    position: absolute;
-    /* Center the line exactly in the middle of the dot */
-    top: 6px; 
-    width: 2px;
-    height: 60px; 
-    background: linear-gradient(to bottom, var(--accent-bright), var(--accent-pink));
-    opacity: 0.3;
-    z-index: -1;
-    /* This makes the line shrink toward its own center */
-    transform-origin: center;
-    animation: rung-sync 2s ease-in-out infinite;
     animation-delay: var(--d);
 }
 
@@ -134,32 +93,22 @@ nav.container-fluid {
     animation-name: dna-twist-reverse !important;
 }
 
-/* Hide rungs on the second strand so they don't double up */
-.second-strand::before { display: none !important; }
-
 @keyframes dna-twist {
-    0%, 100% { transform: translateY(-30px) scale(1.2); z-index: 10; opacity: 1; }
-    50% { transform: translateY(30px) scale(0.8); z-index: 1; opacity: 0.6; }
+    0%, 100% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
+    50% { transform: translateY(30px) scale(0.7); opacity: 0.4; z-index: 1; }
 }
 
 @keyframes dna-twist-reverse {
-    0%, 100% { transform: translateY(30px) scale(0.8); z-index: 1; opacity: 0.6; }
-    50% { transform: translateY(-30px) scale(1.2); z-index: 10; opacity: 1; }
+    0%, 100% { transform: translateY(30px) scale(0.7); opacity: 0.4; z-index: 1; }
+    50% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
 }
 
-@keyframes rung-sync {
-    0%, 100% { transform: scaleY(1); opacity: 0.3; }
-    45%, 55% { transform: scaleY(0.1); opacity: 0; } /* Hide line as dots cross */
-    50% { transform: scaleY(0); opacity: 0; }
-}
-
-/* --- 5. CARDS --- */
+/* --- 5. CARDS (DYNAMIC HEIGHT & PINK HOVER) --- */
 .grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    align-items: stretch !important;
-    text-align: left; /* Keep card text left-aligned */
+    align-items: stretch !important; 
 }
 
 article.project-card {
@@ -168,24 +117,31 @@ article.project-card {
     border: 1px solid var(--glass-border) !important;
     border-radius: 20px !important;
     padding: 2rem !important;
+    margin: 0 !important;
+    
     display: flex !important;
     flex-direction: column !important;
-    height: 100% !important;
+    height: 100% !important; 
     transition: all 0.4s ease !important;
 }
 
-article.project-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent-pink) !important;
-    box-shadow: 0 0 25px rgba(163, 41, 158, 0.4) !important;
+.card-body {
+    flex-grow: 1 !important;
+    display: flex;
+    flex-direction: column;
 }
 
-.card-body { flex-grow: 1 !important; }
-
 .card-footer {
-    margin-top: auto !important;
+    margin-top: auto !important; 
     padding-top: 1.5rem !important;
     border-top: 1px solid var(--glass-border) !important;
+    background: transparent !important;
+}
+
+article.project-card:hover {
+    transform: translateY(-10px) scale(1.01) !important;
+    border-color: var(--accent-pink) !important;
+    box-shadow: 0 0 25px rgba(163, 41, 158, 0.4) !important;
 }
 
 .view-link {
@@ -197,40 +153,87 @@ article.project-card:hover {
 /* --- 6. FOOTER --- */
 .footer-content {
     text-align: center;
-    padding: 60px 0;
+    padding: 40px 0;
+    margin-top: 50px;
 }
 
-/* --- 7. BUTTONS --- */
-#hero-glow-btn, .contact-btn, [role="button"] {
+.footer-links {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    margin: 0 15px;
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-bright);
+}
+
+/* --- 7. BUTTONS & HERO GLOW --- */
+[role="button"] {
+    background-color: var(--accent-bright) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 12px 30px !important;
+}
+
+#hero-glow-btn {
     background-color: var(--accent-bright) !important;
     border: none !important;
     color: white !important;
-    border-radius: 50px !important;
-    padding: 12px 30px !important;
+    box-shadow: 0 0 20px rgba(127, 29, 255, 0.5) !important;
     display: inline-flex !important;
-    justify-content: center;
-    align-items: center;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 20px auto !important;
     text-decoration: none !important;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    box-shadow: 0 0 15px rgba(127, 29, 255, 0.4) !important;
 }
 
-#hero-glow-btn:hover, .contact-btn:hover {
-    transform: translateY(-8px) !important;
-    box-shadow: 0 0 30px rgba(127, 29, 255, 0.7) !important;
+#hero-glow-btn:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 0 40px rgba(127, 29, 255, 0.8) !important;
+    filter: brightness(1.2) !important;
 }
 
 /* --- 8. CONTACT GRID --- */
 .contact-grid {
     display: flex !important;
+    flex-direction: row !important;
     justify-content: center !important;
+    align-items: center !important;
     gap: 40px !important;
     width: 100% !important;
     margin: 40px 0 !important;
 }
 
-.contact-btn.secondary { background-color: var(--accent-pink) !important; }
+.contact-btn {
+    width: auto !important;
+    min-width: 200px !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    text-decoration: none !important;
+    transition: all 0.4s ease !important;
+}
+
+.contact-btn.secondary {
+    background-color: var(--accent-pink) !important;
+    box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
+}
+
+.contact-btn:hover {
+    transform: translateY(-5px) !important;
+    filter: brightness(1.1);
+}
 
 @media (max-width: 600px) {
-    .contact-grid { flex-direction: column; gap: 20px; }
+    .contact-grid {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
 }
