@@ -7,20 +7,18 @@
     --accent-pink: #A3299E;   
     --text-white: #FFFFFF;
     --text-muted: #BDB7C5;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.12);
 }
 
-h2 {
-    text-align: center;
-}
+h2 { text-align: center; }
 
-/* --- 2. OPTIMIZED GLOBAL STYLES --- */
+/* --- 2. PERFORMANCE-OPTIMIZED GLOBAL STYLES --- */
 body {
     background-color: var(--bg-dark) !important;
     background-image: radial-gradient(circle at 10% 20%, rgba(127, 29, 255, 0.12) 0%, transparent 40%),
                       radial-gradient(circle at 90% 80%, rgba(163, 41, 158, 0.12) 0%, transparent 40%);
-    background-attachment: fixed; /* Prevents scroll lag caused by large gradient repaints */
+    background-attachment: fixed;
     color: var(--text-white) !important;
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -29,22 +27,15 @@ body {
     padding-top: 80px; 
 }
 
-h1, h2, h3, h4, p, li, strong, span {
-    color: var(--text-white) !important;
-}
-
-.highlight {
-    color: var(--accent-bright) !important;
-}
+h1, h2, h3, h4, p, li, strong, span { color: var(--text-white) !important; }
+.highlight { color: var(--accent-bright) !important; }
 
 /* --- 3. NAVIGATION --- */
 nav.container-fluid {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 5, 38, 0.8) !important;
-    backdrop-filter: blur(15px) saturate(180%);
-    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    background: rgba(18, 5, 38, 0.9) !important;
     border-bottom: 1px solid var(--glass-border) !important;
     z-index: 1000;
     padding: 10px 0;
@@ -59,7 +50,7 @@ nav.container-fluid {
     padding: 0 40px;
 }
 
-/* --- 4. HERO & DNA TWIST ANIMATION --- */
+/* --- 4. HERO & DNA ANIMATION --- */
 .hero {
     background: transparent !important;
     padding: 100px 0 60px 0;
@@ -82,16 +73,16 @@ nav.container-fluid {
     height: 12px;
     background: var(--accent-bright);
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--accent-bright);
+    box-shadow: 0 0 12px var(--accent-bright);
     left: calc(50% + (var(--i) - 3.5) * 30px);
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
-    will-change: transform, opacity;
+    will-change: transform;
 }
 
 .second-strand {
     background: var(--accent-pink) !important;
-    box-shadow: 0 0 15px var(--accent-pink);
+    box-shadow: 0 0 12px var(--accent-pink);
     animation-name: dna-twist-reverse !important;
 }
 
@@ -105,7 +96,7 @@ nav.container-fluid {
     50% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
 }
 
-/* --- 5. CARDS (DYNAMIC HEIGHT, FAST PINK HOVER & OPTIMIZED BLUR) --- */
+/* --- 5. CARDS (FAST SCROLLING & PINK HOVER) --- */
 .grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -114,20 +105,15 @@ nav.container-fluid {
 }
 
 article.project-card {
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(4px); /* Optimized from 10px to eliminate scroll stutter */
-    -webkit-backdrop-filter: blur(4px);
+    background: var(--glass-bg) !important;
     border: 1px solid var(--glass-border) !important;
     border-radius: 20px !important;
     padding: 2rem !important;
     margin: 0 !important;
-    
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important; 
-    
     will-change: transform, border-color, box-shadow;
-    transform: translateZ(0); /* Forces GPU rendering for 60fps animations */
     transition: transform 0.15s ease-out, border-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
 }
 
@@ -145,9 +131,9 @@ article.project-card {
 }
 
 article.project-card:hover {
-    transform: translateY(-6px) translateZ(0) !important;
+    transform: translateY(-5px) !important;
     border-color: var(--accent-pink) !important;
-    box-shadow: 0 8px 25px rgba(163, 41, 158, 0.35) !important;
+    box-shadow: 0 0 20px rgba(163, 41, 158, 0.35) !important;
 }
 
 .view-link {
@@ -163,57 +149,45 @@ article.project-card:hover {
     margin-top: 50px;
 }
 
-.footer-links {
-    margin-bottom: 15px;
-}
-
-.footer-links a {
-    margin: 0 15px;
-    color: var(--text-white);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-.footer-links a:hover {
-    color: var(--accent-bright);
-}
-
-/* --- 7. UNIFIED HIGH-PERFORMANCE GLOW BUTTONS --- */
-.glow-btn, #hero-glow-btn {
-    background-color: var(--accent-bright) !important;
-    border: none !important;
-    color: #ffffff !important;
-    border-radius: 50px !important;
-    padding: 12px 32px !important;
+/* --- 7. STUBBORN PICO OVERRIDE & GLOW BUTTONS --- */
+a[role="button"].contact-btn {
     display: inline-flex !important;
     justify-content: center !important;
     align-items: center !important;
-    margin: 20px auto !important;
-    text-decoration: none !important;
+    padding: 12px 32px !important;
+    border-radius: 50px !important;
     font-weight: 600 !important;
-    box-shadow: 0 0 15px rgba(127, 29, 255, 0.6) !important;
-    
+    text-decoration: none !important;
+    border: none !important;
+    margin: 0 !important;
+    min-width: 200px !important;
+    width: auto !important;
+    color: #ffffff !important;
     will-change: transform, box-shadow;
-    transform: translateZ(0);
     transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out !important;
 }
 
-.glow-btn:hover, #hero-glow-btn:hover {
-    transform: translateY(-6px) translateZ(0) !important;
-    box-shadow: 0 0 30px rgba(127, 29, 255, 0.95), 0 0 10px rgba(127, 29, 255, 0.5) !important;
+/* Violet Glow Button */
+a[role="button"].glow-violet {
+    background-color: var(--accent-bright) !important;
+    box-shadow: 0 0 15px rgba(127, 29, 255, 0.6) !important;
+}
+
+a[role="button"].glow-violet:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 0 30px rgba(127, 29, 255, 0.9) !important;
     filter: brightness(1.15) !important;
 }
 
-/* Pink Glow Variant for Secondary Contact Action (Instagram) */
-.glow-btn.pink {
+/* Magenta Glow Button */
+a[role="button"].glow-pink {
     background-color: var(--accent-pink) !important;
     box-shadow: 0 0 15px rgba(163, 41, 158, 0.6) !important;
 }
 
-.glow-btn.pink:hover {
-    transform: translateY(-6px) translateZ(0) !important;
-    box-shadow: 0 0 30px rgba(163, 41, 158, 0.95), 0 0 10px rgba(163, 41, 158, 0.5) !important;
+a[role="button"].glow-pink:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 0 30px rgba(163, 41, 158, 0.9) !important;
     filter: brightness(1.15) !important;
 }
 
@@ -226,12 +200,6 @@ article.project-card:hover {
     gap: 30px !important;
     width: 100% !important;
     margin: 40px 0 !important;
-}
-
-.contact-btn-wrapper {
-    min-width: 200px;
-    display: flex;
-    justify-content: center;
 }
 
 @media (max-width: 600px) {
