@@ -200,7 +200,7 @@ article.project-card:hover {
     filter: brightness(1.2) !important;
 }
 
-/* --- 8. CONTACT GRID --- */
+/* --- 8. CONTACT GRID & GLOWING BUTTONS --- */
 .contact-grid {
     display: flex !important;
     flex-direction: row !important;
@@ -216,19 +216,39 @@ article.project-card:hover {
     min-width: 200px !important;
     display: inline-flex !important;
     justify-content: center !important;
+    align-items: center !important;
     margin: 0 !important;
     text-decoration: none !important;
-    transition: all 0.4s ease !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 12px 30px !important;
+    color: var(--text-white) !important;
+    /* Snappier 0.2s speed for faster hover feedback */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, filter 0.2s ease-out !important;
 }
 
-.contact-btn.secondary {
+/* Violet Glow Button (LinkedIn) */
+.contact-btn.glow-violet {
+    background-color: var(--accent-bright) !important;
+    box-shadow: 0 0 20px rgba(127, 29, 255, 0.5) !important;
+}
+
+.contact-btn.glow-violet:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 0 35px rgba(127, 29, 255, 0.85) !important;
+    filter: brightness(1.2) !important;
+}
+
+/* Magenta/Pink Glow Button (Instagram) */
+.contact-btn.glow-pink {
     background-color: var(--accent-pink) !important;
-    box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
+    box-shadow: 0 0 20px rgba(163, 41, 158, 0.5) !important;
 }
 
-.contact-btn:hover {
-    transform: translateY(-5px) !important;
-    filter: brightness(1.1);
+.contact-btn.glow-pink:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 0 35px rgba(163, 41, 158, 0.85) !important;
+    filter: brightness(1.2) !important;
 }
 
 @media (max-width: 600px) {
