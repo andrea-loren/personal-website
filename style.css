@@ -15,11 +15,12 @@ h2 {
     text-align: center;
 }
 
-/* --- 2. GLOBAL STYLES --- */
+/* --- 2. OPTIMIZED GLOBAL STYLES --- */
 body {
     background-color: var(--bg-dark) !important;
-    background-image: radial-gradient(circle at 10% 20%, rgba(127, 29, 255, 0.15) 0%, transparent 40%),
-                      radial-gradient(circle at 90% 80%, rgba(163, 41, 158, 0.15) 0%, transparent 40%);
+    background-image: radial-gradient(circle at 10% 20%, rgba(127, 29, 255, 0.12) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(163, 41, 158, 0.12) 0%, transparent 40%);
+    background-attachment: fixed; /* Prevents scroll lag caused by large gradient repaints */
     color: var(--text-white) !important;
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -85,6 +86,7 @@ nav.container-fluid {
     left: calc(50% + (var(--i) - 3.5) * 30px);
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
+    will-change: transform, opacity;
 }
 
 .second-strand {
@@ -103,7 +105,7 @@ nav.container-fluid {
     50% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
 }
 
-/* --- 5. CARDS (DYNAMIC HEIGHT & PINK HOVER) --- */
+/* --- 5. CARDS (DYNAMIC HEIGHT, FAST PINK HOVER & OPTIMIZED BLUR) --- */
 .grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -112,8 +114,9 @@ nav.container-fluid {
 }
 
 article.project-card {
-    background: var(--glass-bg) !important;
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(4px); /* Optimized from 10px to eliminate scroll stutter */
+    -webkit-backdrop-filter: blur(4px);
     border: 1px solid var(--glass-border) !important;
     border-radius: 20px !important;
     padding: 2rem !important;
@@ -122,7 +125,10 @@ article.project-card {
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important; 
-    transition: all 0.4s ease !important;
+    
+    will-change: transform, border-color, box-shadow;
+    transform: translateZ(0); /* Forces GPU rendering for 60fps animations */
+    transition: transform 0.15s ease-out, border-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
 }
 
 .card-body {
@@ -139,9 +145,9 @@ article.project-card {
 }
 
 article.project-card:hover {
-    transform: translateY(-10px) scale(1.01) !important;
+    transform: translateY(-6px) translateZ(0) !important;
     border-color: var(--accent-pink) !important;
-    box-shadow: 0 0 25px rgba(163, 41, 158, 0.4) !important;
+    box-shadow: 0 8px 25px rgba(163, 41, 158, 0.35) !important;
 }
 
 .view-link {
@@ -166,89 +172,66 @@ article.project-card:hover {
     color: var(--text-white);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s;
+    transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
     color: var(--accent-bright);
 }
 
-/* --- 7. BUTTONS & HERO GLOW --- */
-[role="button"] {
+/* --- 7. UNIFIED HIGH-PERFORMANCE GLOW BUTTONS --- */
+.glow-btn, #hero-glow-btn {
     background-color: var(--accent-bright) !important;
     border: none !important;
+    color: #ffffff !important;
     border-radius: 50px !important;
-    padding: 12px 30px !important;
-}
-
-#hero-glow-btn {
-    background-color: var(--accent-bright) !important;
-    border: none !important;
-    color: white !important;
-    box-shadow: 0 0 20px rgba(127, 29, 255, 0.5) !important;
+    padding: 12px 32px !important;
     display: inline-flex !important;
     justify-content: center !important;
     align-items: center !important;
     margin: 20px auto !important;
     text-decoration: none !important;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 0 15px rgba(127, 29, 255, 0.6) !important;
+    
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out !important;
 }
 
-#hero-glow-btn:hover {
-    transform: translateY(-10px) !important;
-    box-shadow: 0 0 40px rgba(127, 29, 255, 0.8) !important;
-    filter: brightness(1.2) !important;
+.glow-btn:hover, #hero-glow-btn:hover {
+    transform: translateY(-6px) translateZ(0) !important;
+    box-shadow: 0 0 30px rgba(127, 29, 255, 0.95), 0 0 10px rgba(127, 29, 255, 0.5) !important;
+    filter: brightness(1.15) !important;
 }
 
-/* --- 8. CONTACT GRID & GLOWING BUTTONS --- */
+/* Pink Glow Variant for Secondary Contact Action (Instagram) */
+.glow-btn.pink {
+    background-color: var(--accent-pink) !important;
+    box-shadow: 0 0 15px rgba(163, 41, 158, 0.6) !important;
+}
+
+.glow-btn.pink:hover {
+    transform: translateY(-6px) translateZ(0) !important;
+    box-shadow: 0 0 30px rgba(163, 41, 158, 0.95), 0 0 10px rgba(163, 41, 158, 0.5) !important;
+    filter: brightness(1.15) !important;
+}
+
+/* --- 8. CONTACT GRID --- */
 .contact-grid {
     display: flex !important;
     flex-direction: row !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 40px !important;
+    gap: 30px !important;
     width: 100% !important;
     margin: 40px 0 !important;
 }
 
-.contact-btn {
-    width: auto !important;
-    min-width: 200px !important;
-    display: inline-flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin: 0 !important;
-    text-decoration: none !important;
-    border: none !important;
-    border-radius: 50px !important;
-    padding: 12px 30px !important;
-    color: var(--text-white) !important;
-    /* Snappier 0.2s speed for faster hover feedback */
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, filter 0.2s ease-out !important;
-}
-
-/* Violet Glow Button (LinkedIn) */
-.contact-btn.glow-violet {
-    background-color: var(--accent-bright) !important;
-    box-shadow: 0 0 20px rgba(127, 29, 255, 0.5) !important;
-}
-
-.contact-btn.glow-violet:hover {
-    transform: translateY(-8px) !important;
-    box-shadow: 0 0 35px rgba(127, 29, 255, 0.85) !important;
-    filter: brightness(1.2) !important;
-}
-
-/* Magenta/Pink Glow Button (Instagram) */
-.contact-btn.glow-pink {
-    background-color: var(--accent-pink) !important;
-    box-shadow: 0 0 20px rgba(163, 41, 158, 0.5) !important;
-}
-
-.contact-btn.glow-pink:hover {
-    transform: translateY(-8px) !important;
-    box-shadow: 0 0 35px rgba(163, 41, 158, 0.85) !important;
-    filter: brightness(1.2) !important;
+.contact-btn-wrapper {
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 600px) {
