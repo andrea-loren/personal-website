@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let charIndex = 0;
 
     function typeWriter() {
-        if (charIndex < nameText.length) {
+        if (typedElement && charIndex < nameText.length) {
             typedElement.innerHTML += nameText.charAt(charIndex);
             charIndex++;
             setTimeout(typeWriter, 80);
@@ -27,10 +27,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameInterval;
     let timerInterval;
 
-    openGameBtn.addEventListener('click', () => gameModal.classList.remove('hidden'));
-    closeGameBtn.addEventListener('click', () => gameModal.classList.add('hidden'));
+    if (openGameBtn && gameModal) {
+        openGameBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            gameModal.style.display = 'flex';
+        });
+    }
 
-    startBtn.addEventListener('click', startGame);
+    if (closeGameBtn && gameModal) {
+        closeGameBtn.addEventListener('click', () => {
+            gameModal.style.display = 'none';
+            endGame();
+        });
+    }
+
+    if (startBtn) {
+        startBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            startGame();
+        });
+    }
 
     function startGame() {
         score = 0;
@@ -39,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timerDisplay.textContent = timeLeft;
         startBtn.style.display = 'none';
 
-        gameInterval = setInterval(spawnTarget, 700);
+        gameInterval = setInterval(spawnTarget, 650);
         timerInterval = setInterval(() => {
             timeLeft--;
             timerDisplay.textContent = timeLeft;
@@ -50,11 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function spawnTarget() {
+        if (!gameCanvas) return;
         gameCanvas.innerHTML = '';
         const target = document.createElement('div');
         target.classList.add('target-dot');
         
-        // Alternate colors
         if (Math.random() > 0.5) {
             target.style.background = 'var(--accent-pink)';
             target.style.boxShadow = '0 0 15px var(--accent-pink)';
@@ -62,8 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const maxX = gameCanvas.clientWidth - 30;
         const maxY = gameCanvas.clientHeight - 30;
-        target.style.left = `${Math.floor(Math.random() * maxX)}px`;
-        target.style.top = `${Math.floor(Math.random() * maxY)}px`;
+        target.style.left = `${Math.max(5, Math.floor(Math.random() * maxX))}px`;
+        target.style.top = `${Math.max(5, Math.floor(Math.random() * maxY))}px`;
 
         target.addEventListener('click', () => {
             score += 10;
@@ -77,9 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function endGame() {
         clearInterval(gameInterval);
         clearInterval(timerInterval);
-        gameCanvas.innerHTML = '';
-        startBtn.style.display = 'inline-flex';
-        startBtn.textContent = 'Play Again';
-        alert(`Time's up! You synthesized ${score} points of DNA! 🧬`);
+        if (gameCanvas) gameCanvas.innerHTML = '';
+        if (startBtn) {
+            startBtn.style.display = 'inline-flex';
+            startBtn.textContent = 'Play Again';
+        }
     }
 });

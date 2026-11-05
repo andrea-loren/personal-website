@@ -390,3 +390,160 @@ a[role="button"].glow-pink:hover {
         justify-content: center;
     }
 }
+
+/* --- 9. HERO TERMINAL & GAME MODAL FIXES --- */
+.hero-terminal {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 35px !important;
+    padding: 80px 0 50px 0 !important;
+    max-width: 850px !important;
+    margin: 0 auto !important;
+}
+
+.hero-left {
+    flex: 0 0 60px !important;
+    height: 180px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.hero-right {
+    text-align: left !important;
+    flex: 1 !important;
+}
+
+.hero-right h1 {
+    font-size: 2.6rem !important;
+    margin: 0 0 10px 0 !important;
+    min-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem !important;
+    color: var(--text-muted) !important;
+    margin-bottom: 25px !important;
+}
+
+.hero-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 15px !important;
+    align-items: center !important;
+}
+
+/* Vertical DNA Override */
+.dna-wrapper-vertical {
+    position: relative !important;
+    width: 60px !important;
+    height: 180px !important;
+}
+
+.dna-wrapper-vertical .dna-dot {
+    position: absolute !important;
+    width: 12px !important;
+    height: 12px !important;
+    left: 24px !important;
+    top: calc(50% + (var(--i) - 3.5) * 26px) !important;
+    animation: dna-twist-vertical 2s ease-in-out infinite !important;
+    animation-delay: var(--d) !important;
+}
+
+.dna-wrapper-vertical .second-strand {
+    animation-name: dna-twist-vertical-reverse !important;
+}
+
+@keyframes dna-twist-vertical {
+    0%, 100% { transform: translateX(-22px) scale(1.2); opacity: 1; z-index: 10; }
+    50% { transform: translateX(22px) scale(0.7); opacity: 0.4; z-index: 1; }
+}
+
+@keyframes dna-twist-vertical-reverse {
+    0%, 100% { transform: translateX(22px) scale(0.7); opacity: 0.4; z-index: 1; }
+    50% { transform: translateX(-22px) scale(1.2); opacity: 1; z-index: 10; }
+}
+
+/* Typing Cursor */
+.cursor {
+    display: inline-block !important;
+    color: var(--accent-pink) !important;
+    font-weight: 300 !important;
+    margin-left: 4px !important;
+    animation: blink 0.8s infinite !important;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Hidden Game Modal Popup */
+.game-modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(18, 5, 38, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    z-index: 2000 !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.game-box {
+    background: var(--bg-dark) !important;
+    border: 1px solid var(--accent-pink) !important;
+    box-shadow: 0 0 30px rgba(163, 41, 158, 0.4) !important;
+    border-radius: 20px !important;
+    padding: 30px !important;
+    width: 90% !important;
+    max-width: 440px !important;
+    text-align: center !important;
+    position: relative !important;
+    margin: 0 auto !important;
+}
+
+.game-close-x {
+    position: absolute !important;
+    top: 15px !important;
+    right: 20px !important;
+    color: var(--text-white) !important;
+    font-size: 1.8rem !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+}
+
+.game-stats {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin: 15px 0 !important;
+    font-weight: 600 !important;
+}
+
+#game-canvas {
+    width: 100% !important;
+    height: 200px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin-bottom: 20px !important;
+}
+
+.target-dot {
+    position: absolute !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    background: var(--accent-bright) !important;
+    box-shadow: 0 0 15px var(--accent-bright) !important;
+    cursor: pointer !important;
+}

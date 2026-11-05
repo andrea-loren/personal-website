@@ -58,25 +58,64 @@
             
             <div class="hero-actions">
                 <a href="contact.html" role="button" class="contact-btn glow-violet">Get in Touch</a>
-                <button id="game-mode-btn" class="contact-btn glow-pink">🎮 Play Game</button>
+                <a href="#" role="button" id="game-mode-btn" class="contact-btn glow-pink">🎮 Play Game</a>
             </div>
         </div>
     </section>
 
-    <!-- FLOATING GAME OVERLAY CONTAINER -->
-    <div id="game-modal" class="game-modal hidden">
-        <div class="game-box">
-            <button id="close-game" class="close-btn">&times;</button>
-            <h3>DNA Sequence Catcher 🧬</h3>
-            <p>Catch the glowing nucleotides before time runs out!</p>
-            <div class="game-stats">
-                <span>Score: <strong id="game-score">0</strong></span>
-                <span>Time: <strong id="game-timer">15</strong>s</span>
-            </div>
-            <div id="game-canvas"></div>
-            <button id="start-game-btn" class="contact-btn glow-violet">Start Sequence</button>
+    <!-- FEATURED PROJECTS GRID -->
+    <section id="projects">
+        <h2>Featured</h2>
+        <div class="grid">
+            <article class="project-card">
+                <div class="card-body">
+                    <h3>City Island Oyster Reef</h3>
+                    <p>Integrating AI with conservation and marine science research in the Bronx.</p>
+                </div>
+                <footer class="card-footer">
+                    <a href="#" class="view-link">Read more →</a>
+                </footer>
+            </article>
+
+            <article class="project-card">
+                <div class="card-body">
+                    <h3>National Center for Women & Information Technology</h3>
+                    <p>Winner of the NCWIT's Aspirations in Computing (AiC) Affiliate award for the greater New York City & Hudson Valley region.</p>
+                </div>
+                <footer class="card-footer">
+                    <a href="https://www.aspirations.org/people/andrea-m/157993" target="_blank" class="view-link">Details →</a>
+                </footer>
+            </article>
+
+            <article class="project-card">
+                <div class="card-body">
+                    <h3>SeaSmart Ocean Junior Ambassador</h3>
+                    <p>Advocating for young women in marine science through a local 501(c)(3).</p>
+                </div>
+                <footer class="card-footer">
+                    <a href="https://www.seasmartocean.org/involve-your-organization" target="_blank" class="view-link">Details →</a>
+                </footer>
+            </article>
         </div>
+    </section>
+</main>
+
+<!-- HIDDEN GAME MODAL OVERLAY (OUTSIDE MAIN TO AVOID CONTAINER BREAKS) -->
+<div id="game-modal" class="game-modal-overlay" style="display: none;">
+    <div class="game-box">
+        <span id="close-game" class="game-close-x">&times;</span>
+        <h3>DNA Sequence Catcher 🧬</h3>
+        <p>Catch the glowing nucleotides before time runs out!</p>
+        <div class="game-stats">
+            <span>Score: <strong id="game-score">0</strong></span>
+            <span>Time: <strong id="game-timer">15</strong>s</span>
+        </div>
+        <div id="game-canvas"></div>
+        <a href="#" role="button" id="start-game-btn" class="contact-btn glow-violet">Start Sequence</a>
     </div>
+</div>
+
+<script src="script.js" defer></script>
 
     <!-- REST OF YOUR PROJECTS SECTION CONTINUES HERE -->
 
