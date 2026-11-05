@@ -208,3 +208,185 @@ a[role="button"].glow-pink:hover {
         gap: 20px !important;
     }
 }
+
+/* --- HERO TERMINAL LAYOUT (VERTICAL DNA + TYPING) --- */
+.hero-terminal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 80px 0 60px 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-left {
+    flex-shrink: 0;
+    width: 60px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-right {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.hero-right h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    min-height: 3.5rem; /* Prevents layout jump while typing */
+    display: flex;
+    align-items: center;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Vertical DNA Twist Animation */
+.dna-wrapper-vertical {
+    position: relative;
+    width: 60px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dna-wrapper-vertical .dna-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: calc(50% + (var(--i) - 3.5) * 28px);
+    left: auto;
+    animation: dna-twist-vertical 2s ease-in-out infinite;
+    animation-delay: var(--d);
+    will-change: transform;
+}
+
+.dna-wrapper-vertical .second-strand {
+    animation-name: dna-twist-vertical-reverse !important;
+}
+
+@keyframes dna-twist-vertical {
+    0%, 100% { transform: translateX(-25px) scale(1.2); opacity: 1; z-index: 10; }
+    50% { transform: translateX(25px) scale(0.7); opacity: 0.4; z-index: 1; }
+}
+
+@keyframes dna-twist-vertical-reverse {
+    0%, 100% { transform: translateX(25px) scale(0.7); opacity: 0.4; z-index: 1; }
+    50% { transform: translateX(-25px) scale(1.2); opacity: 1; z-index: 10; }
+}
+
+/* Typing Cursor Animation */
+.cursor {
+    display: inline-block;
+    color: var(--accent-pink);
+    font-weight: 300;
+    margin-left: 4px;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Game Modal Overlay */
+.game-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(18, 5, 38, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-modal.hidden {
+    display: none;
+}
+
+.game-box {
+    background: var(--bg-dark);
+    border: 1px solid var(--accent-pink);
+    box-shadow: 0 0 30px rgba(163, 41, 158, 0.4);
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-white);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+#game-canvas {
+    width: 100%;
+    height: 220px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.target-dot {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent-bright);
+    box-shadow: 0 0 15px var(--accent-bright);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+@media (max-width: 700px) {
+    .hero-terminal {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-right {
+        text-align: center;
+    }
+    .hero-right h1 {
+        justify-content: center;
+    }
+    .hero-actions {
+        justify-content: center;
+    }
+}
