@@ -1,4 +1,6 @@
-/* --- 1. FONTS & VARIABLES --- */
+/* ==========================================================================
+   1. FONTS, VARIABLES & GLOBAL RESETS
+   ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
 :root {
@@ -11,9 +13,10 @@
     --glass-border: rgba(255, 255, 255, 0.12);
 }
 
-h2 { text-align: center; }
+h2 { 
+    text-align: center; 
+}
 
-/* --- 2. PERFORMANCE-OPTIMIZED GLOBAL STYLES --- */
 body {
     background-color: var(--bg-dark) !important;
     background-image: radial-gradient(circle at 10% 20%, rgba(127, 29, 255, 0.12) 0%, transparent 40%),
@@ -27,10 +30,17 @@ body {
     padding-top: 80px; 
 }
 
-h1, h2, h3, h4, p, li, strong, span { color: var(--text-white) !important; }
-.highlight { color: var(--accent-bright) !important; }
+h1, h2, h3, h4, p, li, strong, span { 
+    color: var(--text-white) !important; 
+}
 
-/* --- 3. NAVIGATION --- */
+.highlight { 
+    color: var(--accent-bright) !important; 
+}
+
+/* ==========================================================================
+   2. NAVIGATION
+   ========================================================================== */
 nav.container-fluid {
     position: fixed;
     top: 0;
@@ -50,382 +60,50 @@ nav.container-fluid {
     padding: 0 40px;
 }
 
-/* --- 4. HERO & DNA ANIMATION --- */
+/* ==========================================================================
+   3. HERO TERMINAL & VERTICAL DNA TWIST
+   ========================================================================== */
 .hero {
     background: transparent !important;
-    padding: 100px 0 60px 0;
+    padding: 60px 0 40px 0;
     text-align: center;
 }
 
-.dna-wrapper {
-    position: relative;
-    height: 100px; 
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.dna-dot {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: var(--accent-bright);
-    border-radius: 50%;
-    box-shadow: 0 0 12px var(--accent-bright);
-    left: calc(50% + (var(--i) - 3.5) * 30px);
-    animation: dna-twist 2s ease-in-out infinite;
-    animation-delay: var(--d);
-    will-change: transform;
-}
-
-.second-strand {
-    background: var(--accent-pink) !important;
-    box-shadow: 0 0 12px var(--accent-pink);
-    animation-name: dna-twist-reverse !important;
-}
-
-@keyframes dna-twist {
-    0%, 100% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
-    50% { transform: translateY(30px) scale(0.7); opacity: 0.4; z-index: 1; }
-}
-
-@keyframes dna-twist-reverse {
-    0%, 100% { transform: translateY(30px) scale(0.7); opacity: 0.4; z-index: 1; }
-    50% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
-}
-
-/* --- 5. CARDS (FAST SCROLLING & PINK HOVER) --- */
-.grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    align-items: stretch !important; 
-}
-
-article.project-card {
-    background: var(--glass-bg) !important;
-    border: 1px solid var(--glass-border) !important;
-    border-radius: 20px !important;
-    padding: 2rem !important;
-    margin: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important; 
-    will-change: transform, border-color, box-shadow;
-    transition: transform 0.15s ease-out, border-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
-}
-
-.card-body {
-    flex-grow: 1 !important;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-footer {
-    margin-top: auto !important; 
-    padding-top: 1.5rem !important;
-    border-top: 1px solid var(--glass-border) !important;
-    background: transparent !important;
-}
-
-article.project-card:hover {
-    transform: translateY(-5px) !important;
-    border-color: var(--accent-pink) !important;
-    box-shadow: 0 0 20px rgba(163, 41, 158, 0.35) !important;
-}
-
-.view-link {
-    color: var(--accent-bright) !important;
-    font-weight: 600;
-    text-decoration: none !important;
-}
-
-/* --- 6. FOOTER --- */
-.footer-content {
-    text-align: center;
-    padding: 40px 0;
-    margin-top: 50px;
-}
-
-/* --- 7. STUBBORN PICO OVERRIDE & GLOW BUTTONS --- */
-a[role="button"].contact-btn {
-    display: inline-flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    padding: 12px 32px !important;
-    border-radius: 50px !important;
-    font-weight: 600 !important;
-    text-decoration: none !important;
-    border: none !important;
-    margin: 0 !important;
-    min-width: 200px !important;
-    width: auto !important;
-    color: #ffffff !important;
-    will-change: transform, box-shadow;
-    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out !important;
-}
-
-/* Violet Glow Button */
-a[role="button"].glow-violet {
-    background-color: var(--accent-bright) !important;
-    box-shadow: 0 0 15px rgba(127, 29, 255, 0.6) !important;
-}
-
-a[role="button"].glow-violet:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 0 30px rgba(127, 29, 255, 0.9) !important;
-    filter: brightness(1.15) !important;
-}
-
-/* Magenta Glow Button */
-a[role="button"].glow-pink {
-    background-color: var(--accent-pink) !important;
-    box-shadow: 0 0 15px rgba(163, 41, 158, 0.6) !important;
-}
-
-a[role="button"].glow-pink:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 0 30px rgba(163, 41, 158, 0.9) !important;
-    filter: brightness(1.15) !important;
-}
-
-/* --- 8. CONTACT GRID --- */
-.contact-grid {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 30px !important;
-    width: 100% !important;
-    margin: 40px 0 !important;
-}
-
-@media (max-width: 600px) {
-    .contact-grid {
-        flex-direction: column !important;
-        gap: 20px !important;
-    }
-}
-
-/* --- HERO TERMINAL LAYOUT (VERTICAL DNA + TYPING) --- */
-.hero-terminal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 80px 0 60px 0;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.hero-left {
-    flex-shrink: 0;
-    width: 60px;
-    height: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero-right {
-    text-align: left;
-    flex-grow: 1;
-}
-
-.hero-right h1 {
-    font-size: 2.8rem;
-    margin-bottom: 10px;
-    min-height: 3.5rem; /* Prevents layout jump while typing */
-    display: flex;
-    align-items: center;
-}
-
-.hero-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    margin-bottom: 25px;
-}
-
-.hero-actions {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-/* Vertical DNA Twist Animation */
-.dna-wrapper-vertical {
-    position: relative;
-    width: 60px;
-    height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.dna-wrapper-vertical .dna-dot {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    top: calc(50% + (var(--i) - 3.5) * 28px);
-    left: auto;
-    animation: dna-twist-vertical 2s ease-in-out infinite;
-    animation-delay: var(--d);
-    will-change: transform;
-}
-
-.dna-wrapper-vertical .second-strand {
-    animation-name: dna-twist-vertical-reverse !important;
-}
-
-@keyframes dna-twist-vertical {
-    0%, 100% { transform: translateX(-25px) scale(1.2); opacity: 1; z-index: 10; }
-    50% { transform: translateX(25px) scale(0.7); opacity: 0.4; z-index: 1; }
-}
-
-@keyframes dna-twist-vertical-reverse {
-    0%, 100% { transform: translateX(25px) scale(0.7); opacity: 0.4; z-index: 1; }
-    50% { transform: translateX(-25px) scale(1.2); opacity: 1; z-index: 10; }
-}
-
-/* Typing Cursor Animation */
-.cursor {
-    display: inline-block;
-    color: var(--accent-pink);
-    font-weight: 300;
-    margin-left: 4px;
-    animation: blink 0.8s infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* Game Modal Overlay */
-.game-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(18, 5, 38, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 2000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.game-modal.hidden {
-    display: none;
-}
-
-.game-box {
-    background: var(--bg-dark);
-    border: 1px solid var(--accent-pink);
-    box-shadow: 0 0 30px rgba(163, 41, 158, 0.4);
-    border-radius: 20px;
-    padding: 30px;
-    width: 90%;
-    max-width: 450px;
-    text-align: center;
-    position: relative;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--text-white);
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-.game-stats {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-    font-weight: 600;
-}
-
-#game-canvas {
-    width: 100%;
-    height: 220px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-.target-dot {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--accent-bright);
-    box-shadow: 0 0 15px var(--accent-bright);
-    cursor: pointer;
-    transition: transform 0.1s ease;
-}
-
-@media (max-width: 700px) {
-    .hero-terminal {
-        flex-direction: column;
-        text-align: center;
-    }
-    .hero-right {
-        text-align: center;
-    }
-    .hero-right h1 {
-        justify-content: center;
-    }
-    .hero-actions {
-        justify-content: center;
-    }
-}
-
-/* --- 9. HERO TERMINAL & GAME MODAL FIXES --- */
 .hero-terminal {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 35px !important;
-    padding: 80px 0 50px 0 !important;
-    max-width: 850px !important;
-    margin: 0 auto !important;
+    gap: 40px !important;
+    padding: 80px 0 60px 0 !important;
+    width: fit-content !important;
+    margin: 0 auto !important; /* Centers the whole hero block */
 }
 
 .hero-left {
-    flex: 0 0 60px !important;
+    position: relative !important;
+    width: 60px !important;
     height: 180px !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    flex-shrink: 0 !important;
 }
 
 .hero-right {
     text-align: left !important;
-    flex: 1 !important;
 }
 
 .hero-right h1 {
-    font-size: 2.6rem !important;
+    font-size: 2.8rem !important;
     margin: 0 0 10px 0 !important;
-    min-height: 3.2rem !important;
+    min-height: 3.5rem !important;
     display: flex !important;
     align-items: center !important;
 }
 
 .hero-subtitle {
-    font-size: 1.1rem !important;
+    font-size: 1.15rem !important;
     color: var(--text-muted) !important;
     margin-bottom: 25px !important;
 }
@@ -437,7 +115,7 @@ a[role="button"].glow-pink:hover {
     align-items: center !important;
 }
 
-/* Vertical DNA Override */
+/* Vertical DNA Twist Animation */
 .dna-wrapper-vertical {
     position: relative !important;
     width: 60px !important;
@@ -448,24 +126,30 @@ a[role="button"].glow-pink:hover {
     position: absolute !important;
     width: 12px !important;
     height: 12px !important;
-    left: 24px !important;
-    top: calc(50% + (var(--i) - 3.5) * 26px) !important;
+    background: var(--accent-bright) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 10px var(--accent-bright) !important;
+    left: 24px !important; /* Center of the column */
+    top: calc(10px + (var(--i) - 1) * 28px) !important; /* Stacks dots vertically top-to-bottom */
     animation: dna-twist-vertical 2s ease-in-out infinite !important;
     animation-delay: var(--d) !important;
+    will-change: transform, opacity !important;
 }
 
 .dna-wrapper-vertical .second-strand {
+    background: var(--accent-pink) !important;
+    box-shadow: 0 0 10px var(--accent-pink) !important;
     animation-name: dna-twist-vertical-reverse !important;
 }
 
 @keyframes dna-twist-vertical {
-    0%, 100% { transform: translateX(-22px) scale(1.2); opacity: 1; z-index: 10; }
-    50% { transform: translateX(22px) scale(0.7); opacity: 0.4; z-index: 1; }
+    0%, 100% { transform: translateX(-24px) scale(1.2); opacity: 1; z-index: 10; }
+    50% { transform: translateX(24px) scale(0.7); opacity: 0.4; z-index: 1; }
 }
 
 @keyframes dna-twist-vertical-reverse {
-    0%, 100% { transform: translateX(22px) scale(0.7); opacity: 0.4; z-index: 1; }
-    50% { transform: translateX(-22px) scale(1.2); opacity: 1; z-index: 10; }
+    0%, 100% { transform: translateX(24px) scale(0.7); opacity: 0.4; z-index: 1; }
+    50% { transform: translateX(-24px) scale(1.2); opacity: 1; z-index: 10; }
 }
 
 /* Typing Cursor */
@@ -482,7 +166,123 @@ a[role="button"].glow-pink:hover {
     50% { opacity: 0; }
 }
 
-/* Hidden Game Modal Popup */
+/* ==========================================================================
+   4. PROJECT CARDS (DYNAMIC HEIGHT & HIGH PERFORMANCE)
+   ========================================================================== */
+.grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: stretch !important; 
+}
+
+article.project-card {
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 20px !important;
+    padding: 2.2rem !important;
+    margin: 0 0 2rem 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important; 
+    
+    will-change: transform;
+    transform: translateZ(0);
+    transition: transform 0.15s ease-out, border-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
+}
+
+.card-body {
+    flex-grow: 1 !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-footer {
+    margin-top: auto !important; 
+    padding-top: 1.2rem !important;
+    padding-bottom: 0.4rem !important;
+    border-top: 1px solid var(--glass-border) !important;
+    background: transparent !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+}
+
+article.project-card:hover {
+    transform: translateY(-5px) translateZ(0) !important;
+    border-color: var(--accent-pink) !important;
+    box-shadow: 0 0 20px rgba(163, 41, 158, 0.35) !important;
+}
+
+.view-link {
+    color: var(--accent-bright) !important;
+    font-weight: 600;
+    text-decoration: none !important;
+    display: inline-block !important;
+}
+
+/* ==========================================================================
+   5. BUTTON STYLES & GLOW EFFECTS
+   ========================================================================== */
+a[role="button"].contact-btn {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 12px 32px !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    border: none !important;
+    margin: 0 !important;
+    min-width: 180px !important;
+    width: auto !important;
+    color: #ffffff !important;
+    
+    will-change: transform;
+    transform: translateZ(0);
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out !important;
+}
+
+/* Violet Glow Button */
+a[role="button"].glow-violet {
+    background-color: var(--accent-bright) !important;
+    box-shadow: 0 0 15px rgba(127, 29, 255, 0.6) !important;
+}
+
+a[role="button"].glow-violet:hover {
+    transform: translateY(-4px) translateZ(0) !important;
+    box-shadow: 0 0 25px rgba(127, 29, 255, 0.9) !important;
+    filter: brightness(1.15) !important;
+}
+
+/* Magenta Glow Button */
+a[role="button"].glow-pink {
+    background-color: var(--accent-pink) !important;
+    box-shadow: 0 0 15px rgba(163, 41, 158, 0.6) !important;
+}
+
+a[role="button"].glow-pink:hover {
+    transform: translateY(-4px) translateZ(0) !important;
+    box-shadow: 0 0 25px rgba(163, 41, 158, 0.9) !important;
+    filter: brightness(1.15) !important;
+}
+
+/* ==========================================================================
+   6. CONTACT GRID
+   ========================================================================== */
+.contact-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 18px !important;
+    width: 100% !important;
+    margin: 40px 0 !important;
+}
+
+/* ==========================================================================
+   7. GAME MODAL OVERLAY
+   ========================================================================== */
 .game-modal-overlay {
     position: fixed !important;
     top: 0 !important;
@@ -546,4 +346,34 @@ a[role="button"].glow-pink:hover {
     background: var(--accent-bright) !important;
     box-shadow: 0 0 15px var(--accent-bright) !important;
     cursor: pointer !important;
+}
+
+/* ==========================================================================
+   8. FOOTER & MEDIA QUERIES
+   ========================================================================== */
+.footer-content {
+    text-align: center;
+    padding: 40px 0 60px 0;
+    margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+    .hero-terminal {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 20px !important;
+    }
+    .hero-right {
+        text-align: center !important;
+    }
+    .hero-right h1 {
+        justify-content: center !important;
+    }
+    .hero-actions {
+        justify-content: center !important;
+    }
+    .contact-grid {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
 }
