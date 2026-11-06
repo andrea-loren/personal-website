@@ -159,15 +159,17 @@ h1, h2, h3, h4, p, li, span, a {
     font-weight: 800;
 }
 
+/* --- HERO CURSOR STYLING --- */
 .custom-cursor {
-    display: inline-block;
-    width: 3px;
-    height: 2.2rem;
-    background-color: var(--accent-pink) !important;
-    box-shadow: 0 0 10px var(--accent-pink) !important;
-    margin-left: 6px;
-    animation: blink-cursor 0.75s infinite;
-    vertical-align: middle;
+    display: inline-block !important;
+    width: 3px !important;
+    height: 2.2rem !important;
+    background-color: var(--text-white) !important;
+    box-shadow: 0 0 10px var(--text-white) !important;
+    margin-left: 6px !important;
+    animation: blink-cursor 0.75s infinite !important;
+    vertical-align: middle !important;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease !important;
 }
 
 .custom-cursor.pink-cursor {
@@ -180,6 +182,56 @@ h1, h2, h3, h4, p, li, span, a {
     50% { opacity: 0; }
 }
 
+/* --- ABOUT ME SECTION (FIXED PHOTO WRAPPING) --- */
+.about-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.about-row {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.about-row.reverse {
+    flex-direction: row;
+}
+
+.about-text {
+    flex: 1;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    background: transparent !important; /* Prevents text background overlays */
+}
+
+.about-photo-frame {
+    width: 280px;
+    height: 190px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.responsive-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .about-row, .about-row.reverse {
+        flex-direction: column;
+    }
+    .about-photo-frame {
+        width: 100%;
+        height: 220px;
+    }
+}
 .hero-subtitle {
     font-size: 1.1rem;
     color: var(--text-muted);
