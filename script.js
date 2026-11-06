@@ -1,39 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. DYNAMIC TYPING EFFECT WITH MATCHING PINK CURSOR & STYLED WEIGHTS
+    // 1. TYPING EFFECT WITH PERMANENT PINK CURSOR & LOWERCASE STYLING
     const typedElement = document.getElementById('typed-name');
-    const cursorElement = document.querySelector('.custom-cursor');
-    
     if (typedElement) {
         const fullText = "andrea loren mannoia";
         let index = 0;
 
         function type() {
             if (index <= fullText.length) {
-                const currentText = fullText.substring(0, index);
-                
-                // 1. Check if currently typing within the "loren" character index range
-                const isTypingLoren = index > 6 && index <= 12;
-
-                // 2. Dynamically turn cursor pink while typing "loren"
-                if (cursorElement) {
-                    if (isTypingLoren) {
-                        cursorElement.classList.add('pink-cursor');
-                    } else {
-                        cursorElement.classList.remove('pink-cursor');
-                    }
+                let current = fullText.substring(0, index);
+                if (current.includes("loren")) {
+                    current = current.replace("loren", '<span class="pink-text">loren</span>');
                 }
-
-                // 3. Format typed text HTML
-                let formattedText = currentText;
-                if (currentText.includes("loren")) {
-                    formattedText = currentText.replace("loren", '<span class="pink-text">loren</span>');
-                } else if (index > 6) {
-                    // Highlight partial "loren" in pink as it types character-by-character
-                    const typedLorenPart = fullText.substring(7, index);
-                    formattedText = "andrea " + `<span class="pink-text">${typedLorenPart}</span>`;
-                }
-
-                typedElement.innerHTML = formattedText;
+                typedElement.innerHTML = current;
                 index++;
                 setTimeout(type, 75);
             }
