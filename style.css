@@ -163,12 +163,11 @@ h1, h2, h3, h4, p, li, span, a {
     display: inline-block;
     width: 3px;
     height: 2.2rem;
-    background-color: var(--text-white);
-    box-shadow: 0 0 10px var(--text-white);
+    background-color: var(--accent-pink) !important;
+    box-shadow: 0 0 10px var(--accent-pink) !important;
     margin-left: 6px;
     animation: blink-cursor 0.75s infinite;
     vertical-align: middle;
-    transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .custom-cursor.pink-cursor {
