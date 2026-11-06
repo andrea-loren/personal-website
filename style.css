@@ -13,7 +13,9 @@
     --glass-border: rgba(255, 255, 255, 0.12);
 }
 
-h2 { text-align: center; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     background-color: var(--bg-dark) !important;
@@ -29,17 +31,17 @@ body {
 }
 
 h1, h2, h3, h4, p, li, strong, span { color: var(--text-white) !important; }
-.highlight { color: var(--accent-bright) !important; }
 .pink-text { color: var(--accent-pink) !important; font-weight: 600; }
+.location-tag, .location-sub { color: var(--text-muted) !important; font-size: 0.95rem; }
 
 /* ==========================================================================
-   2. NAVIGATION
+   2. HEADER & NAVIGATION BAR
    ========================================================================== */
 nav.container-fluid {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 5, 38, 0.9) !important;
+    background: rgba(18, 5, 38, 0.92) !important;
     border-bottom: 1px solid var(--glass-border) !important;
     z-index: 1000;
     padding: 10px 0;
@@ -50,12 +52,46 @@ nav.container-fluid {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 30px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--text-white) !important;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-pink) !important;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.social-icons a {
+    font-size: 1.1rem;
+    text-decoration: none;
 }
 
 /* ==========================================================================
-   3. HERO TERMINAL & VERTICAL DNA
+   3. HERO & DNA ANIMATION
    ========================================================================== */
 .hero-terminal {
     display: flex !important;
@@ -63,47 +99,33 @@ nav.container-fluid {
     align-items: center !important;
     justify-content: center !important;
     gap: 30px !important;
-    padding: 70px 0 50px 0 !important;
+    padding: 70px 0 60px 0 !important;
     width: fit-content !important;
-    margin: 0 auto !important;
+    margin: 0 auto 40px auto !important;
 }
 
 .hero-left {
-    position: relative !important;
     width: 50px !important;
     height: 160px !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
     flex-shrink: 0 !important;
-}
-
-.hero-right {
-    text-align: left !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
+    position: relative !important;
 }
 
 .typing-header {
     font-size: 2.7rem !important;
-    margin: 0 0 8px 0 !important;
-    min-height: 3.5rem !important;
+    margin: 0 0 6px 0 !important;
     display: inline-flex !important;
     align-items: center !important;
-    white-space: nowrap !important;
 }
 
-/* THIN, BLINKING NEON PINK CURSOR */
 .custom-cursor {
     display: inline-block !important;
     width: 3px !important;
-    height: 2.4rem !important;
+    height: 2.3rem !important;
     background-color: var(--accent-pink) !important;
     box-shadow: 0 0 10px var(--accent-pink) !important;
     margin-left: 6px !important;
     animation: blink-cursor 0.75s infinite !important;
-    vertical-align: middle !important;
 }
 
 @keyframes blink-cursor {
@@ -111,20 +133,6 @@ nav.container-fluid {
     50% { opacity: 0; }
 }
 
-.hero-subtitle {
-    font-size: 1.15rem !important;
-    color: var(--text-muted) !important;
-    margin: 0 0 25px 0 !important;
-}
-
-.hero-actions {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 15px !important;
-    align-items: center !important;
-}
-
-/* Vertical DNA Twist Animation */
 .dna-wrapper-vertical {
     position: relative !important;
     width: 50px !important;
@@ -142,7 +150,6 @@ nav.container-fluid {
     top: calc(8px + (var(--i) - 1) * 25px) !important;
     animation: dna-twist-vertical 2s ease-in-out infinite !important;
     animation-delay: var(--d) !important;
-    will-change: transform, opacity !important;
 }
 
 .dna-wrapper-vertical .second-strand {
@@ -162,83 +169,231 @@ nav.container-fluid {
 }
 
 /* ==========================================================================
-   4. PROJECT CARDS (FULLY FUNCTIONAL & CLICKABLE LINKS)
+   4. SECTION LAYOUTS & CONTAINERS
    ========================================================================== */
-.grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    align-items: stretch !important; 
+.section-block {
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-article.project-card {
-    background: var(--glass-bg) !important;
-    border: 1px solid var(--glass-border) !important;
-    border-radius: 20px !important;
-    padding: 2rem !important;
-    margin: 0 0 2rem 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important; 
-    box-sizing: border-box !important;
-    
-    will-change: transform, border-color;
-    transform: translateZ(0);
-    transition: transform 0.15s ease-out, border-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
+.section-title-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
 }
 
-.card-body {
-    flex-grow: 1 !important;
+.section-title-wrap h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.social-pill-btn {
+    border: 1px solid var(--accent-pink);
+    color: var(--text-white) !important;
+    padding: 6px 18px;
+    border-radius: 30px;
+    text-decoration: none !important;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.social-pill-btn:hover {
+    background: var(--accent-pink);
+    box-shadow: 0 0 15px rgba(163, 41, 158, 0.5);
+}
+
+/* --- ABOUT GRID --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.about-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.8rem;
+}
+
+.img-placeholder {
+    height: 100%;
+    min-height: 180px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.5rem !important;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-muted);
 }
 
-.card-footer {
-    margin-top: auto !important; 
-    padding-top: 1rem !important;
-    border-top: 1px solid var(--glass-border) !important;
+/* --- EXPERIENCE TABS --- */
+.exp-layout {
+    display: flex;
+    gap: 25px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.exp-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 180px;
+}
+
+.tab-btn {
     background: transparent !important;
+    border: 1px solid transparent !important;
+    color: var(--text-muted) !important;
+    text-align: left !important;
+    padding: 10px 16px !important;
+    border-radius: 12px !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.card-link {
-    color: var(--accent-bright) !important;
-    font-weight: 600 !important;
-    text-decoration: none !important;
-    display: inline-block !important;
-    transition: color 0.2s ease !important;
+.tab-btn.active, .tab-btn:hover {
+    background: rgba(127, 29, 255, 0.2) !important;
+    border-color: var(--accent-bright) !important;
+    color: var(--text-white) !important;
 }
 
-.card-link:hover {
-    color: var(--accent-pink) !important;
-    text-decoration: underline !important;
+.exp-content-box {
+    flex-grow: 1;
 }
 
-article.project-card:hover {
-    transform: translateY(-5px) translateZ(0) !important;
-    border-color: var(--accent-pink) !important;
-    box-shadow: 0 0 20px rgba(163, 41, 158, 0.35) !important;
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+.exp-list {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+/* --- SERVICE GRID --- */
+.three-col-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.8rem;
+}
+
+.card-img-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.mini-img {
+    flex: 1;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed var(--glass-border);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.card-img-placeholder {
+    margin-top: 15px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed var(--glass-border);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --- PROJECTS GRID --- */
+.four-col-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card-media-box {
+    height: 120px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed var(--glass-border);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.canva-embed-card {
+    margin-top: 25px;
+    background: var(--glass-bg);
+    border: 1px solid var(--accent-pink);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* --- AWARDS BADGES --- */
+.badges-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.award-badge {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+}
+
+.award-badge.highlight-badge {
+    border-color: var(--accent-pink);
+    box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
+}
+
+.award-badge:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-bright);
+    box-shadow: 0 0 18px var(--accent-bright);
 }
 
 /* ==========================================================================
-   5. GLOWING BUTTONS & CONTACT GRID
+   5. BUTTONS & FOOTER
    ========================================================================== */
 a[role="button"].contact-btn {
     display: inline-flex !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 12px 30px !important;
+    padding: 10px 26px !important;
     border-radius: 50px !important;
     font-weight: 600 !important;
     text-decoration: none !important;
     border: none !important;
-    margin: 0 !important;
-    min-width: 170px !important;
-    width: auto !important;
     color: #ffffff !important;
-    will-change: transform;
-    transform: translateZ(0);
-    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out !important;
+    transition: all 0.2s ease !important;
 }
 
 a[role="button"].glow-violet {
@@ -247,51 +402,18 @@ a[role="button"].glow-violet {
 }
 
 a[role="button"].glow-violet:hover {
-    transform: translateY(-4px) translateZ(0) !important;
+    transform: translateY(-3px) !important;
     box-shadow: 0 0 25px rgba(127, 29, 255, 0.9) !important;
-    filter: brightness(1.15) !important;
 }
 
-a[role="button"].glow-pink {
-    background-color: var(--accent-pink) !important;
-    box-shadow: 0 0 15px rgba(163, 41, 158, 0.6) !important;
-}
-
-a[role="button"].glow-pink:hover {
-    transform: translateY(-4px) translateZ(0) !important;
-    box-shadow: 0 0 25px rgba(163, 41, 158, 0.9) !important;
-    filter: brightness(1.15) !important;
-}
-
-.contact-grid {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 18px !important;
-    width: 100% !important;
-    margin: 40px 0 !important;
-}
-
-/* ==========================================================================
-   6. FOOTER & RESPONSIVE BREAKPOINTS
-   ========================================================================== */
 .footer-content {
     text-align: center;
     padding: 40px 0 60px 0;
-    margin-top: 40px;
 }
 
-@media (max-width: 700px) {
-    .hero-terminal {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: 20px !important;
-    }
-    .hero-right {
-        text-align: center !important;
-    }
-    .hero-actions {
-        justify-content: center !important;
-    }
+@media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .exp-layout { flex-direction: column; }
+    .hero-terminal { flex-direction: column; text-align: center; }
+    .nav-links { display: none; }
 }

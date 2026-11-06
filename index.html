@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loren Mannoia: Home</title>
+    <title>Loren Mannoia: Portfolio</title>
 
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="style.css">
@@ -11,26 +11,35 @@
 </head>
 <body>
 
+<!-- FIXED HEADER NAVIGATION -->
 <nav class="container-fluid">
     <div class="nav-wrapper"> 
         <ul>
             <li>
-                <a href="index.html" class="nav-logo">
-                    <img src="icon.png" alt="Logo" style="height: 40px; width: auto;">
+                <a href="#hero" class="nav-logo">
+                    <img src="icon.png" alt="Logo" style="height: 36px; width: auto;">
                 </a>
             </li>
         </ul>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Loren</a></li>
-            <li><a href="contact.html">Contact</a></li>
+        <ul class="nav-links">
+            <li><a href="#about">about</a></li>
+            <li><a href="#experience">experience</a></li>
+            <li><a href="#service">service</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#awards">awards</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="mailto:contact@lorenmannoia.tech" aria-label="Email">✉️</a></li>
+            <li><a href="https://github.com/andrea-loren" target="_blank" aria-label="GitHub">🐙</a></li>
+            <li><a href="https://linkedin.com/in/andrea-m-189483354" target="_blank" aria-label="LinkedIn">💼</a></li>
+            <li><a href="https://instagram.com/_andrea_loren" target="_blank" aria-label="Instagram">📷</a></li>
         </ul>
     </div>
 </nav>
 
 <main class="container">
-    <!-- CENTERED HERO WITH VERTICAL DNA & CLEAN TYPING CURSOR -->
-    <section class="hero-terminal">
+    <!-- HERO SECTION WITH VERTICAL DNA -->
+    <section id="hero" class="hero-terminal">
         <div class="hero-left">
             <div class="dna-wrapper-vertical">
                 <div class="dna-dot" style="--i:1; --d:0s"></div>
@@ -52,47 +61,169 @@
         <div class="hero-right">
             <h1 class="typing-header"><span id="typed-name"></span><span class="custom-cursor"></span></h1>
             <p class="hero-subtitle">Deliberation • Science • Technology</p>
+            <p class="location-tag">📍 New York City</p>
             
             <div class="hero-actions">
-                <a href="contact.html" role="button" class="contact-btn glow-violet">Get in Touch</a>
-                <a href="https://github.com/andrea-loren" target="_blank" role="button" class="contact-btn glow-pink">GitHub Profile</a>
+                <a href="contact.html" role="button" class="contact-btn glow-violet">✉️ Say hi!</a>
             </div>
         </div>
     </section>
 
-    <!-- FEATURED PROJECTS GRID -->
-    <section id="projects">
-        <h2>Featured</h2>
-        <div class="grid">
-            <article class="project-card">
-                <div class="card-body">
-                    <h3>City Island Oyster Reef</h3>
-                    <p>Integrating AI object-recognition models with marine conservation research to automate spat counting in Long Island Sound.</p>
+    <!-- 1. ABOUT ME SECTION -->
+    <section id="about" class="section-block">
+        <div class="section-title-wrap">
+            <h2><span class="pink-text">/</span>about me</h2>
+            <a href="https://instagram.com/_andrea_loren" target="_blank" class="social-pill-btn">Instagram ↗</a>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-card text-card">
+                <p>I am a high school senior at Convent of the Sacred Heart in Manhattan, and I am passionate about the intersection of science and technology, as well as how that intersection can be informed by culture, creativity, and philosophy. Specifically, I care a lot about the ocean and the environment, and am interested in how we can apply artificial intelligence and machine learning to them.</p>
+            </div>
+            <div class="about-card image-card">
+                <div class="img-placeholder">[ picture of me ]<br><small>HEADSHOT</small></div>
+            </div>
+            
+            <div class="about-card image-card">
+                <div class="img-placeholder">[ picture of me ]<br><small>FUN / FIELD WORK</small></div>
+            </div>
+            <div class="about-card text-card">
+                <p>In my free time, I love writing and photography and I also enjoy reading and swimming. I also love serving on the production team at Hoboken Grace, where I've gone to church for fifteen years. My friends call me a "side-quester" and "random-lore-dropper," and I once broke my nose walking into a pole.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. EXPERIENCE SECTION -->
+    <section id="experience" class="section-block">
+        <div class="section-title-wrap">
+            <h2><span class="pink-text">/</span>experience</h2>
+            <a href="https://linkedin.com/in/andrea-m-189483354" target="_blank" class="social-pill-btn">LinkedIn ↗</a>
+        </div>
+
+        <div class="exp-layout">
+            <div class="exp-tabs">
+                <button class="tab-btn active" onclick="showExpTab('csh')">Sacred Heart</button>
+                <button class="tab-btn" onclick="showExpTab('cior')">CIOR</button>
+                <button class="tab-btn" onclick="showExpTab('hoboken')">Hoboken Grace</button>
+            </div>
+
+            <div class="exp-content-box">
+                <div id="tab-csh" class="tab-pane active">
+                    <h3>Convent of the Sacred Heart</h3>
+                    <p class="location-sub">📍 Manhattan, NY</p>
+                    <ul class="exp-list">
+                        <li><strong>Kairos Leader & Mentor:</strong> Mentor younger students throughout retreats and leadership workshops. <em>(Feb 2026 – Present)</em></li>
+                        <li><strong>CSH Coding Club:</strong> Lead technical projects and peer coding workshops in Python and web development.</li>
+                        <li><strong>Foreign Exchange Program:</strong> Participated in international academic exchange and cultural dialogue.</li>
+                        <li><strong>Conference Delegate:</strong> Represented school at deliberative STEM and leadership roundtables.</li>
+                    </ul>
                 </div>
-                <div class="card-footer">
-                    <a href="https://github.com/andrea-loren" target="_blank" class="card-link">View Research →</a>
+
+                <div id="tab-cior" class="tab-pane">
+                    <h3>City Island Oyster Reef (CIOR)</h3>
+                    <p class="location-sub">📍 Bronx, NY</p>
+                    <ul class="exp-list">
+                        <li><strong>AI Research & Conservation:</strong> Integrating computer vision models to automate oyster spat counting in Long Island Sound.</li>
+                    </ul>
+                </div>
+
+                <div id="tab-hoboken" class="tab-pane">
+                    <h3>Hoboken Grace Community Church</h3>
+                    <p class="location-sub">📍 Hoboken, NJ</p>
+                    <ul class="exp-list">
+                        <li><strong>Production Team Leader:</strong> Volunteer on tech, AV, and live broadcast operations for weekly services.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SERVICE SECTION -->
+    <section id="service" class="section-block">
+        <div class="section-title-wrap">
+            <h2><span class="pink-text">/</span>service</h2>
+            <a href="https://linkedin.com/in/andrea-m-189483354" target="_blank" class="social-pill-btn">LinkedIn ↗</a>
+        </div>
+
+        <div class="three-col-grid">
+            <article class="service-card">
+                <h3>World Hope International</h3>
+                <ul>
+                    <li>Spent time in Sierra Leone supporting community initiatives.</li>
+                    <li>Worked with disabled children & families.</li>
+                    <li>Helped feed 3,000+ people at annual Beach Day.</li>
+                    <li>Hosted physical therapy staff retreat support.</li>
+                </ul>
+                <div class="card-img-row">
+                    <div class="mini-img">[ Image 1 ]</div>
+                    <div class="mini-img">[ Image 2 ]</div>
                 </div>
             </article>
 
+            <article class="service-card">
+                <h3>Hoboken Grace Church</h3>
+                <p>15 years of active volunteer service across youth mentoring, community outreach, and live production management.</p>
+                <div class="card-img-placeholder">* photos / media *</div>
+            </article>
+
+            <article class="service-card">
+                <h3>Next Wave Project</h3>
+                <p>Empowering young women in marine ecology and ocean conservation through education and hands-on environmental action.</p>
+                <div class="card-img-placeholder">* photos / media *</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 4. PROJECTS SECTION -->
+    <section id="projects" class="section-block">
+        <div class="section-title-wrap">
+            <h2><span class="pink-text">/</span>projects</h2>
+            <a href="https://github.com/andrea-loren" target="_blank" class="social-pill-btn">GitHub ↗</a>
+        </div>
+
+        <div class="four-col-grid">
             <article class="project-card">
-                <div class="card-body">
-                    <h3>NCWIT AiC Award</h3>
-                    <p>Recipient of the National Center for Women & Information Technology Aspirations in Computing Affiliate Award for NYC & Hudson Valley.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="https://www.aspirations.org/people/andrea-m/157993" target="_blank" class="card-link">Award Details →</a>
-                </div>
+                <div class="card-media-box">[ IMAGE LINK ]</div>
+                <h3>Mile Square Safe</h3>
+                <p>Safety alert platform for local community navigation.</p>
             </article>
 
             <article class="project-card">
-                <div class="card-body">
-                    <h3>SeaSmart Ocean Ambassador</h3>
-                    <p>Advocating for young women in marine ecology and environmental science through local 501(c)(3) community initiatives.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="https://www.seasmartocean.org/involve-your-organization" target="_blank" class="card-link">Learn More →</a>
-                </div>
+                <div class="card-media-box">[ IMAGE LINK ]</div>
+                <h3>CIOR News</h3>
+                <p>AI spat object-recognition tracker & marine news hub.</p>
             </article>
+
+            <article class="project-card">
+                <div class="card-media-box">[ IMAGE LINK ]</div>
+                <h3>CSH Resources</h3>
+                <p>Student resource aggregator and study portal.</p>
+            </article>
+
+            <article class="project-card">
+                <div class="card-media-box">[ IMAGE LINK ]</div>
+                <h3>Planner</h3>
+                <p>Modular task scheduler built for high-demand workflows.</p>
+            </article>
+        </div>
+
+        <div class="canva-embed-card">
+            <h3>Imago Dei to Deus Ex Machina</h3>
+            <p><small>(Canva Presentation / Essay Project)</small></p>
+        </div>
+    </section>
+
+    <!-- 5. AWARDS & CERTIFICATIONS SECTION -->
+    <section id="awards" class="section-block">
+        <h2><span class="pink-text">/</span>awards & certifications</h2>
+        <div class="badges-flex">
+            <span class="award-badge">National Merit Scholarship</span>
+            <span class="award-badge highlight-badge">NCWIT AiC Award 🏆</span>
+            <span class="award-badge">CSH Merit Scholar</span>
+            <span class="award-badge">Scholastic Art & Writing Awards</span>
+            <span class="award-badge">AAIS All-Star Award</span>
+            <span class="award-badge">NextGen RoundTable Deliberative Dialogue</span>
+            <span class="award-badge">HackTrin UX/UI Winner</span>
         </div>
     </section>
 </main>
