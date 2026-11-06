@@ -1,17 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. TYPING EFFECT WITH PERMANENT PINK CURSOR & LOWERCASE STYLING
+    // 1. DYNAMIC TYPING EFFECT WITH FIXED PINK CURSOR
     const typedElement = document.getElementById('typed-name');
+    const cursorElement = document.querySelector('.custom-cursor');
+    
     if (typedElement) {
         const fullText = "andrea loren mannoia";
         let index = 0;
 
         function type() {
             if (index <= fullText.length) {
-                let current = fullText.substring(0, index);
-                if (current.includes("loren")) {
-                    current = current.replace("loren", '<span class="pink-text">loren</span>');
+                const currentText = fullText.substring(0, index);
+                
+                // Keep cursor pink during and after "loren"
+                if (cursorElement) {
+                    if (index >= 7) {
+                        cursorElement.classList.add('pink-cursor');
+                    } else {
+                        cursorElement.classList.remove('pink-cursor');
+                    }
                 }
-                typedElement.innerHTML = current;
+
+                // Format text output
+                let formattedText = currentText;
+                if (currentText.includes("loren")) {
+                    formattedText = currentText.replace("loren", '<span class="pink-text">loren</span>');
+                } else if (index > 6) {
+                    const typedLorenPart = fullText.substring(7, index);
+                    formattedText = "andrea " + `<span class="pink-text">${typedLorenPart}</span>`;
+                }
+
+                typedElement.innerHTML = formattedText;
                 index++;
                 setTimeout(type, 75);
             }
