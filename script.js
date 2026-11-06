@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. TYPING EFFECT
+    // 1. TYPING EFFECT (BOLD NAME WITH PINK MIDDLE NAME)
     const typedElement = document.getElementById('typed-name');
     if (typedElement) {
         const fullText = "Andrea Loren Mannoia";
@@ -16,23 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(type, 75);
             }
         }
-        setTimeout(type, 250);
+        setTimeout(type, 200);
     }
 
-    // 2. EXPERIENCE TAB SWITCHER
-    const tabButtons = document.querySelectorAll('.exp-tab-btn');
+    // 2. EXPERIENCE SECTION TAB SWITCHER
+    const tabPills = document.querySelectorAll('.exp-pill');
     const tabPanes = document.querySelectorAll('.exp-pane');
 
-    tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const targetId = btn.getAttribute('data-tab');
+    tabPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            const targetId = pill.getAttribute('data-tab');
 
-            tabButtons.forEach(b => b.classList.remove('active'));
-            tabPanes.forEach(p => p.classList.remove('active'));
+            tabPills.forEach(p => p.classList.remove('active'));
+            tabPanes.forEach(pane => pane.classList.remove('active'));
 
-            btn.classList.add('active');
-            const targetPane = document.getElementById(targetId);
-            if (targetPane) targetPane.classList.add('active');
+            pill.classList.add('active');
+            const activePane = document.getElementById(targetId);
+            if (activePane) activePane.classList.add('active');
         });
     });
 });
