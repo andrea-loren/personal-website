@@ -2,14 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. TYPING EFFECT (BOLD NAME WITH PINK MIDDLE NAME)
     const typedElement = document.getElementById('typed-name');
     if (typedElement) {
-        const fullText = "Andrea Loren Mannoia";
+        const fullText = "andrea loren mannoia";
         let index = 0;
 
         function type() {
             if (index <= fullText.length) {
                 let current = fullText.substring(0, index);
-                if (current.includes("Loren")) {
-                    current = current.replace("Loren", '<span class="pink-text">Loren</span>');
+                if (current.includes("loren")) {
+                    current = current.replace("loren", '<span class="pink-text">loren</span>');
                 }
                 typedElement.innerHTML = current;
                 index++;
