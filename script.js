@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. TYPING EFFECT FOR NAME HEADER
+    // 1. TYPING EFFECT
     const typedElement = document.getElementById('typed-name');
     if (typedElement) {
         const fullText = "Andrea Loren Mannoia";
@@ -18,18 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         setTimeout(type, 250);
     }
+
+    // 2. EXPERIENCE TAB SWITCHER
+    const tabButtons = document.querySelectorAll('.exp-tab-btn');
+    const tabPanes = document.querySelectorAll('.exp-pane');
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-tab');
+
+            tabButtons.forEach(b => b.classList.remove('active'));
+            tabPanes.forEach(p => p.classList.remove('active'));
+
+            btn.classList.add('active');
+            const targetPane = document.getElementById(targetId);
+            if (targetPane) targetPane.classList.add('active');
+        });
+    });
 });
-
-// 2. EXPERIENCE SECTION TAB SWITCHING
-function showExpTab(tabId) {
-    const panes = document.querySelectorAll('.tab-pane');
-    const buttons = document.querySelectorAll('.tab-btn');
-
-    panes.forEach(pane => pane.classList.remove('active'));
-    buttons.forEach(btn => btn.classList.remove('active'));
-
-    const activePane = document.getElementById(`tab-${tabId}`);
-    if (activePane) activePane.classList.add('active');
-
-    event.currentTarget.classList.add('active');
-}
