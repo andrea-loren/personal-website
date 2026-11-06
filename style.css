@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. FONTS, VARIABLES & GLOBAL STYLES
+   1. FONTS, VARIABLES & GLOBAL RESETS
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
@@ -30,6 +30,7 @@ body {
 
 h1, h2, h3, h4, p, li, strong, span { color: var(--text-white) !important; }
 .highlight { color: var(--accent-bright) !important; }
+.pink-text { color: var(--accent-pink) !important; font-weight: 600; }
 
 /* ==========================================================================
    2. NAVIGATION
@@ -54,15 +55,15 @@ nav.container-fluid {
 }
 
 /* ==========================================================================
-   3. HERO TERMINAL & VERTICAL DNA STYLING (INSERT / REPLACE HERE)
+   3. HERO TERMINAL & VERTICAL DNA
    ========================================================================== */
 .hero-terminal {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 35px !important;
-    padding: 80px 0 60px 0 !important;
+    gap: 30px !important;
+    padding: 70px 0 50px 0 !important;
     width: fit-content !important;
     margin: 0 auto !important;
 }
@@ -77,6 +78,53 @@ nav.container-fluid {
     flex-shrink: 0 !important;
 }
 
+.hero-right {
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+.typing-header {
+    font-size: 2.7rem !important;
+    margin: 0 0 8px 0 !important;
+    min-height: 3.5rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+}
+
+/* THIN, BLINKING NEON PINK CURSOR */
+.custom-cursor {
+    display: inline-block !important;
+    width: 3px !important;
+    height: 2.4rem !important;
+    background-color: var(--accent-pink) !important;
+    box-shadow: 0 0 10px var(--accent-pink) !important;
+    margin-left: 6px !important;
+    animation: blink-cursor 0.75s infinite !important;
+    vertical-align: middle !important;
+}
+
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.hero-subtitle {
+    font-size: 1.15rem !important;
+    color: var(--text-muted) !important;
+    margin: 0 0 25px 0 !important;
+}
+
+.hero-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 15px !important;
+    align-items: center !important;
+}
+
+/* Vertical DNA Twist Animation */
 .dna-wrapper-vertical {
     position: relative !important;
     width: 50px !important;
@@ -113,12 +161,8 @@ nav.container-fluid {
     50% { transform: translateX(-20px) scale(1.2); opacity: 1; z-index: 10; }
 }
 
-.highlight-pink {
-    color: var(--accent-pink) !important;
-}
-
 /* ==========================================================================
-   4. CARDS & BUTTONS
+   4. PROJECT CARDS (FULLY FUNCTIONAL & CLICKABLE LINKS)
    ========================================================================== */
 .grid {
     display: grid !important;
@@ -131,12 +175,14 @@ article.project-card {
     background: var(--glass-bg) !important;
     border: 1px solid var(--glass-border) !important;
     border-radius: 20px !important;
-    padding: 2.2rem !important;
+    padding: 2rem !important;
     margin: 0 0 2rem 0 !important;
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important; 
-    will-change: transform;
+    box-sizing: border-box !important;
+    
+    will-change: transform, border-color;
     transform: translateZ(0);
     transition: transform 0.15s ease-out, border-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
 }
@@ -145,17 +191,27 @@ article.project-card {
     flex-grow: 1 !important;
     display: flex;
     flex-direction: column;
+    margin-bottom: 1.5rem !important;
 }
 
 .card-footer {
     margin-top: auto !important; 
-    padding-top: 1.2rem !important;
-    padding-bottom: 0.4rem !important;
+    padding-top: 1rem !important;
     border-top: 1px solid var(--glass-border) !important;
     background: transparent !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
+}
+
+.card-link {
+    color: var(--accent-bright) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    transition: color 0.2s ease !important;
+}
+
+.card-link:hover {
+    color: var(--accent-pink) !important;
+    text-decoration: underline !important;
 }
 
 article.project-card:hover {
@@ -164,18 +220,14 @@ article.project-card:hover {
     box-shadow: 0 0 20px rgba(163, 41, 158, 0.35) !important;
 }
 
-.view-link {
-    color: var(--accent-bright) !important;
-    font-weight: 600;
-    text-decoration: none !important;
-    display: inline-block !important;
-}
-
+/* ==========================================================================
+   5. GLOWING BUTTONS & CONTACT GRID
+   ========================================================================== */
 a[role="button"].contact-btn {
     display: inline-flex !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 12px 32px !important;
+    padding: 12px 30px !important;
     border-radius: 50px !important;
     font-weight: 600 !important;
     text-decoration: none !important;
@@ -222,41 +274,7 @@ a[role="button"].glow-pink:hover {
 }
 
 /* ==========================================================================
-   5. FULL-WEBSITE GAME MODE ELEMENTS
-   ========================================================================== */
-#full-game-banner {
-    position: fixed !important;
-    top: 70px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    background: rgba(18, 5, 38, 0.95) !important;
-    border: 1px solid var(--accent-pink) !important;
-    box-shadow: 0 0 20px rgba(163, 41, 158, 0.5) !important;
-    border-radius: 50px !important;
-    padding: 8px 25px !important;
-    color: var(--text-white) !important;
-    font-size: 0.95rem !important;
-    z-index: 2000 !important;
-}
-
-.floating-nucleotide {
-    position: absolute !important;
-    width: 22px !important;
-    height: 22px !important;
-    border-radius: 50% !important;
-    cursor: pointer !important;
-    z-index: 1500 !important;
-    transition: transform 0.15s ease, opacity 0.15s ease !important;
-    animation: pulse-dot 1.5s infinite alternate !important;
-}
-
-@keyframes pulse-dot {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.25); }
-}
-
-/* ==========================================================================
-   6. FOOTER & MEDIA QUERIES
+   6. FOOTER & RESPONSIVE BREAKPOINTS
    ========================================================================== */
 .footer-content {
     text-align: center;
@@ -272,9 +290,6 @@ a[role="button"].glow-pink:hover {
     }
     .hero-right {
         text-align: center !important;
-    }
-    .hero-right h1 {
-        justify-content: center !important;
     }
     .hero-actions {
         justify-content: center !important;
