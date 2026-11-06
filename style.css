@@ -40,7 +40,7 @@ h1, h2, h3, h4, p, li, span, a {
 
 .pink-slash, .pink-text {
     color: var(--accent-pink) !important;
-    font-weight: 700;
+    font-weight: 800 !important;
 }
 
 .page-container {
@@ -163,10 +163,17 @@ h1, h2, h3, h4, p, li, span, a {
     display: inline-block;
     width: 3px;
     height: 2.2rem;
-    background-color: var(--accent-pink);
-    box-shadow: 0 0 10px var(--accent-pink);
+    background-color: var(--text-white);
+    box-shadow: 0 0 10px var(--text-white);
     margin-left: 6px;
     animation: blink-cursor 0.75s infinite;
+    vertical-align: middle;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.custom-cursor.pink-cursor {
+    background-color: var(--accent-pink) !important;
+    box-shadow: 0 0 10px var(--accent-pink) !important;
 }
 
 @keyframes blink-cursor {
@@ -388,48 +395,6 @@ h1, h2, h3, h4, p, li, span, a {
     flex-shrink: 0;
 }
 
-/* Awards Flexbox Layout - Fixed Overlap & Line Heights */
-.awards-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 12px;
-    margin-top: 15px;
-    width: 100%;
-}
-
-.award-pill {
-    display: inline-flex;
-    align-items: center;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    padding: 8px 18px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    text-decoration: none;
-    color: var(--text-white);
-    transition: all 0.2s ease;
-    max-width: 100%;
-    word-break: break-word;
-}
-
-.award-pill:hover {
-    border-color: var(--accent-bright);
-    box-shadow: 0 0 16px var(--accent-bright);
-    transform: translateY(-2px);
-}
-
-.award-pill.clickable {
-    cursor: pointer;
-}
-
-.award-pill.clickable:hover {
-    border-color: var(--accent-pink);
-    box-shadow: 0 0 18px rgba(163, 41, 158, 0.5);
-    color: var(--text-white);
-}
 /* ==========================================================================
    6. SERVICE SECTION
    ========================================================================== */
