@@ -208,7 +208,7 @@ h1, h2, h3, h4, p, li, span, a {
 
 .about-photo-frame {
     width: 280px;
-    height: 190px;
+    height: 280px;
     flex-shrink: 0;
     border-radius: 16px;
     overflow: hidden;
