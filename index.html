@@ -11,16 +11,14 @@
 </head>
 <body>
 
-<!-- FIXED HEADER NAVIGATION -->
-<nav class="container-fluid">
+<!-- STICKY TOP NAVIGATION -->
+<nav class="container-fluid site-nav">
     <div class="nav-wrapper"> 
-        <ul>
-            <li>
-                <a href="#hero" class="nav-logo">
-                    <img src="icon.png" alt="Logo" style="height: 36px; width: auto;">
-                </a>
-            </li>
-        </ul>
+        <div class="nav-left">
+            <a href="#hero" class="nav-logo">
+                <img src="icon.png" alt="Logo">
+            </a>
+        </div>
         <ul class="nav-links">
             <li><a href="#about">about</a></li>
             <li><a href="#experience">experience</a></li>
@@ -28,16 +26,17 @@
             <li><a href="#projects">projects</a></li>
             <li><a href="#awards">awards</a></li>
         </ul>
-        <ul class="social-icons">
-            <li><a href="mailto:contact@lorenmannoia.tech" aria-label="Email">✉️</a></li>
-            <li><a href="https://github.com/andrea-loren" target="_blank" aria-label="GitHub">🐙</a></li>
-            <li><a href="https://linkedin.com/in/andrea-m-189483354" target="_blank" aria-label="LinkedIn">💼</a></li>
-            <li><a href="https://instagram.com/_andrea_loren" target="_blank" aria-label="Instagram">📷</a></li>
-        </ul>
+        <div class="social-icons">
+            <a href="mailto:contact@lorenmannoia.tech" title="Email">✉️</a>
+            <a href="https://github.com/andrea-loren" target="_blank" title="GitHub">🐙</a>
+            <a href="https://linkedin.com/in/andrea-m-189483354" target="_blank" title="LinkedIn">💼</a>
+            <a href="https://instagram.com/_andrea_loren" target="_blank" title="Instagram">📷</a>
+        </div>
     </div>
 </nav>
 
 <main class="container">
+
     <!-- HERO SECTION WITH VERTICAL DNA -->
     <section id="hero" class="hero-terminal">
         <div class="hero-left">
@@ -64,30 +63,40 @@
             <p class="location-tag">📍 New York City</p>
             
             <div class="hero-actions">
-                <a href="contact.html" role="button" class="contact-btn glow-violet">✉️ Say hi!</a>
+                <a href="#about" role="button" class="glow-btn violet">✉️ Say hi!</a>
             </div>
         </div>
     </section>
 
     <!-- 1. ABOUT ME SECTION -->
     <section id="about" class="section-block">
-        <div class="section-title-wrap">
-            <h2><span class="pink-text">/</span>about me</h2>
-            <a href="https://instagram.com/_andrea_loren" target="_blank" class="social-pill-btn">Instagram ↗</a>
+        <div class="section-header">
+            <h2><span class="pink-slash">/</span>about me</h2>
+            <a href="https://instagram.com/_andrea_loren" target="_blank" class="social-badge">Instagram ↗</a>
         </div>
 
         <div class="about-grid">
-            <div class="about-card text-card">
+            <div class="glass-card text-card">
+                <!-- CONTENT EDIT HERE: About Paragraph 1 -->
                 <p>I am a high school senior at Convent of the Sacred Heart in Manhattan, and I am passionate about the intersection of science and technology, as well as how that intersection can be informed by culture, creativity, and philosophy. Specifically, I care a lot about the ocean and the environment, and am interested in how we can apply artificial intelligence and machine learning to them.</p>
             </div>
-            <div class="about-card image-card">
-                <div class="img-placeholder">[ picture of me ]<br><small>HEADSHOT</small></div>
-            </div>
             
-            <div class="about-card image-card">
-                <div class="img-placeholder">[ picture of me ]<br><small>FUN / FIELD WORK</small></div>
+            <div class="glass-card image-card">
+                <!-- CONTENT EDIT HERE: Headshot image file -->
+                <div class="img-box">
+                    <span>[ Headshot Photo ]</span>
+                </div>
             </div>
-            <div class="about-card text-card">
+
+            <div class="glass-card image-card">
+                <!-- CONTENT EDIT HERE: Field work image file -->
+                <div class="img-box">
+                    <span>[ Fun / Field Work Photo ]</span>
+                </div>
+            </div>
+
+            <div class="glass-card text-card">
+                <!-- CONTENT EDIT HERE: About Paragraph 2 -->
                 <p>In my free time, I love writing and photography and I also enjoy reading and swimming. I also love serving on the production team at Hoboken Grace, where I've gone to church for fifteen years. My friends call me a "side-quester" and "random-lore-dropper," and I once broke my nose walking into a pole.</p>
             </div>
         </div>
@@ -95,23 +104,23 @@
 
     <!-- 2. EXPERIENCE SECTION -->
     <section id="experience" class="section-block">
-        <div class="section-title-wrap">
-            <h2><span class="pink-text">/</span>experience</h2>
-            <a href="https://linkedin.com/in/andrea-m-189483354" target="_blank" class="social-pill-btn">LinkedIn ↗</a>
+        <div class="section-header">
+            <h2><span class="pink-slash">/</span>experience</h2>
+            <a href="https://linkedin.com/in/andrea-m-189483354" target="_blank" class="social-badge">LinkedIn ↗</a>
         </div>
 
-        <div class="exp-layout">
-            <div class="exp-tabs">
-                <button class="tab-btn active" onclick="showExpTab('csh')">Sacred Heart</button>
-                <button class="tab-btn" onclick="showExpTab('cior')">CIOR</button>
-                <button class="tab-btn" onclick="showExpTab('hoboken')">Hoboken Grace</button>
+        <div class="glass-card exp-container">
+            <div class="exp-tabs-column">
+                <button class="exp-tab-btn active" data-tab="tab-csh">Sacred Heart</button>
+                <button class="exp-tab-btn" data-tab="tab-cior">CIOR</button>
+                <button class="exp-tab-btn" data-tab="tab-hoboken">Hoboken Grace</button>
             </div>
 
-            <div class="exp-content-box">
-                <div id="tab-csh" class="tab-pane active">
+            <div class="exp-content-column">
+                <div id="tab-csh" class="exp-pane active">
                     <h3>Convent of the Sacred Heart</h3>
-                    <p class="location-sub">📍 Manhattan, NY</p>
-                    <ul class="exp-list">
+                    <p class="sub-location">📍 Manhattan, NY</p>
+                    <ul>
                         <li><strong>Kairos Leader & Mentor:</strong> Mentor younger students throughout retreats and leadership workshops. <em>(Feb 2026 – Present)</em></li>
                         <li><strong>CSH Coding Club:</strong> Lead technical projects and peer coding workshops in Python and web development.</li>
                         <li><strong>Foreign Exchange Program:</strong> Participated in international academic exchange and cultural dialogue.</li>
@@ -119,18 +128,18 @@
                     </ul>
                 </div>
 
-                <div id="tab-cior" class="tab-pane">
+                <div id="tab-cior" class="exp-pane">
                     <h3>City Island Oyster Reef (CIOR)</h3>
-                    <p class="location-sub">📍 Bronx, NY</p>
-                    <ul class="exp-list">
-                        <li><strong>AI Research & Conservation:</strong> Integrating computer vision models to automate oyster spat counting in Long Island Sound.</li>
+                    <p class="sub-location">📍 Bronx, NY</p>
+                    <ul>
+                        <li><strong>AI Research & Conservation:</strong> Integrating object-recognition computer vision models to automate spat counting in Long Island Sound.</li>
                     </ul>
                 </div>
 
-                <div id="tab-hoboken" class="tab-pane">
+                <div id="tab-hoboken" class="exp-pane">
                     <h3>Hoboken Grace Community Church</h3>
-                    <p class="location-sub">📍 Hoboken, NJ</p>
-                    <ul class="exp-list">
+                    <p class="sub-location">📍 Hoboken, NJ</p>
+                    <ul>
                         <li><strong>Production Team Leader:</strong> Volunteer on tech, AV, and live broadcast operations for weekly services.</li>
                     </ul>
                 </div>
@@ -140,13 +149,13 @@
 
     <!-- 3. SERVICE SECTION -->
     <section id="service" class="section-block">
-        <div class="section-title-wrap">
-            <h2><span class="pink-text">/</span>service</h2>
-            <a href="https://linkedin.com/in/andrea-m-189483354" target="_blank" class="social-pill-btn">LinkedIn ↗</a>
+        <div class="section-header">
+            <h2><span class="pink-slash">/</span>service</h2>
+            <a href="https://linkedin.com/in/andrea-m-189483354" target="_blank" class="social-badge">LinkedIn ↗</a>
         </div>
 
-        <div class="three-col-grid">
-            <article class="service-card">
+        <div class="cards-grid three-col">
+            <div class="glass-card service-card">
                 <h3>World Hope International</h3>
                 <ul>
                     <li>Spent time in Sierra Leone supporting community initiatives.</li>
@@ -154,82 +163,90 @@
                     <li>Helped feed 3,000+ people at annual Beach Day.</li>
                     <li>Hosted physical therapy staff retreat support.</li>
                 </ul>
-                <div class="card-img-row">
-                    <div class="mini-img">[ Image 1 ]</div>
-                    <div class="mini-img">[ Image 2 ]</div>
+                <div class="img-row">
+                    <div class="mini-img-box">[ Image 1 ]</div>
+                    <div class="mini-img-box">[ Image 2 ]</div>
                 </div>
-            </article>
+            </div>
 
-            <article class="service-card">
+            <div class="glass-card service-card">
                 <h3>Hoboken Grace Church</h3>
                 <p>15 years of active volunteer service across youth mentoring, community outreach, and live production management.</p>
-                <div class="card-img-placeholder">* photos / media *</div>
-            </article>
+                <div class="full-img-box">[ Photos / Media ]</div>
+            </div>
 
-            <article class="service-card">
+            <div class="glass-card service-card">
                 <h3>Next Wave Project</h3>
                 <p>Empowering young women in marine ecology and ocean conservation through education and hands-on environmental action.</p>
-                <div class="card-img-placeholder">* photos / media *</div>
-            </article>
+                <div class="full-img-box">[ Photos / Media ]</div>
+            </div>
         </div>
     </section>
 
     <!-- 4. PROJECTS SECTION -->
     <section id="projects" class="section-block">
-        <div class="section-title-wrap">
-            <h2><span class="pink-text">/</span>projects</h2>
-            <a href="https://github.com/andrea-loren" target="_blank" class="social-pill-btn">GitHub ↗</a>
+        <div class="section-header">
+            <h2><span class="pink-slash">/</span>projects</h2>
+            <a href="https://github.com/andrea-loren" target="_blank" class="social-badge">GitHub ↗</a>
         </div>
 
-        <div class="four-col-grid">
-            <article class="project-card">
-                <div class="card-media-box">[ IMAGE LINK ]</div>
+        <div class="cards-grid four-col">
+            <div class="glass-card project-card">
+                <div class="project-media">[ Media / Screenshot ]</div>
                 <h3>Mile Square Safe</h3>
                 <p>Safety alert platform for local community navigation.</p>
-            </article>
+                <a href="https://github.com/andrea-loren/MileSquareSafe" target="_blank" class="card-link">View Repo →</a>
+            </div>
 
-            <article class="project-card">
-                <div class="card-media-box">[ IMAGE LINK ]</div>
+            <div class="glass-card project-card">
+                <div class="project-media">[ Media / Screenshot ]</div>
                 <h3>CIOR News</h3>
                 <p>AI spat object-recognition tracker & marine news hub.</p>
-            </article>
+                <a href="https://github.com/andrea-loren" target="_blank" class="card-link">View Research →</a>
+            </div>
 
-            <article class="project-card">
-                <div class="card-media-box">[ IMAGE LINK ]</div>
+            <div class="glass-card project-card">
+                <div class="project-media">[ Media / Screenshot ]</div>
                 <h3>CSH Resources</h3>
                 <p>Student resource aggregator and study portal.</p>
-            </article>
+                <a href="https://github.com/andrea-loren" target="_blank" class="card-link">View Portal →</a>
+            </div>
 
-            <article class="project-card">
-                <div class="card-media-box">[ IMAGE LINK ]</div>
+            <div class="glass-card project-card">
+                <div class="project-media">[ Media / Screenshot ]</div>
                 <h3>Planner</h3>
                 <p>Modular task scheduler built for high-demand workflows.</p>
-            </article>
+                <a href="https://github.com/andrea-loren/student-planner" target="_blank" class="card-link">View App →</a>
+            </div>
         </div>
 
-        <div class="canva-embed-card">
+        <div class="glass-card embed-card">
             <h3>Imago Dei to Deus Ex Machina</h3>
             <p><small>(Canva Presentation / Essay Project)</small></p>
         </div>
     </section>
 
-    <!-- 5. AWARDS & CERTIFICATIONS SECTION -->
+    <!-- 5. AWARDS & CERTIFICATIONS -->
     <section id="awards" class="section-block">
-        <h2><span class="pink-text">/</span>awards & certifications</h2>
-        <div class="badges-flex">
-            <span class="award-badge">National Merit Scholarship</span>
-            <span class="award-badge highlight-badge">NCWIT AiC Award 🏆</span>
-            <span class="award-badge">CSH Merit Scholar</span>
-            <span class="award-badge">Scholastic Art & Writing Awards</span>
-            <span class="award-badge">AAIS All-Star Award</span>
-            <span class="award-badge">NextGen RoundTable Deliberative Dialogue</span>
-            <span class="award-badge">HackTrin UX/UI Winner</span>
+        <div class="section-header center">
+            <h2><span class="pink-slash">/</span>awards & certifications</h2>
+        </div>
+        
+        <div class="awards-wrapper">
+            <span class="award-pill">National Merit Scholarship</span>
+            <span class="award-pill pink-glow">NCWIT AiC Award 🏆</span>
+            <span class="award-pill">CSH Merit Scholar</span>
+            <span class="award-pill">Scholastic Art & Writing Awards</span>
+            <span class="award-pill">AAIS All-Star Award</span>
+            <span class="award-pill">NextGen RoundTable Deliberative Dialogue</span>
+            <span class="award-pill">HackTrin UX/UI Winner</span>
         </div>
     </section>
+
 </main>
 
-<footer class="container">
-    <div class="footer-content">
+<footer class="site-footer">
+    <div class="container">
         <hr>
         <p><small>© 2026 Andrea Loren Mannoia • <a href="https://github.com/andrea-loren" target="_blank">GitHub</a> • <a href="https://linkedin.com/in/andrea-m-189483354" target="_blank">LinkedIn</a> • <a href="https://instagram.com/_andrea_loren" target="_blank">Instagram</a></small></p>
     </div>
