@@ -1,3 +1,3 @@
 **to-do**
-- update next-wave-2.jpg file
-- add creative portfolio section
+- update VSCO w/ new photos
+- add creative writing pieces to Drive
