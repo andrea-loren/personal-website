@@ -1,5 +1,3 @@
-personal website :)
-
-# TO DO
-- flesh out content & other pages
-- add "game mode" & cursor animation
+**to-do**
+- update next-wave-2.jpg file
+- add creative portfolio section
