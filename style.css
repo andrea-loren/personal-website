@@ -245,6 +245,38 @@ h1, h2, h3, h4, p, li, span, a {
     box-shadow: 0 0 25px rgba(127, 29, 255, 0.85);
 }
 
+/* Container for the Creative Portfolio & VSCO buttons */
+.project-actions-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Violet Glow Button */
+.glow-btn.violet {
+    background-color: var(--accent-bright) !important;
+    box-shadow: 0 0 15px rgba(127, 29, 255, 0.5) !important;
+}
+
+.glow-btn.violet:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 25px rgba(127, 29, 255, 0.85) !important;
+}
+
+/* Pink Glow Button */
+.glow-btn.pink {
+    background-color: var(--accent-pink) !important;
+    box-shadow: 0 0 15px rgba(163, 41, 158, 0.5) !important;
+}
+
+.glow-btn.pink:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 25px rgba(163, 41, 158, 0.85) !important;
+}
+
 /* ==========================================================================
    4. SECTIONS & ABOUT ME (SQUARE PHOTO FRAMING)
    ========================================================================== */
